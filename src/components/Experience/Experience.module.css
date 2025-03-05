@@ -1,0 +1,212 @@
+@import "../../vars.css";
+
+/* Estilização base */
+.container {
+  color: var(--color-text);
+  margin-top: 60px;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 14px;
+  gap: 40px;
+  animation: fadeInUp 0.7s ease-out;
+}
+
+/* Skills */
+.skills {
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+.skill:hover {
+  transform: scale(1.05);
+}
+
+.skillImageContainer {
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  transition: background-color 0.3s ease;
+}
+
+.skillImageContainer img {
+  width: 70px;
+}
+
+.skill p {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Histórico */
+.history {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.historyItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, rgba(25, 55, 109, 0) 100%);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.historyItem:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historyItem img {
+  width: 60px;
+  transition: transform 0.3s ease;
+}
+
+.historyItem:hover img {
+  transform: rotate(10deg);
+}
+
+.historyItemDetails {
+  font-family: var(--font-roboto);
+  color: var(--color-text);
+}
+
+.historyItemDetails h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.historyItemDetails p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.historyItemDetails ul {
+  margin-top: 6px;
+  list-style-position: inside;
+  font-size: 20px;
+  list-style-type: disc;
+  margin-left: 15px;
+}
+
+/* 🌟 RESPONSIVIDADE PARA CELULAR */
+@media screen and (max-width: 830px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .skills {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .history {
+    width: 100%;
+  }
+
+  .historyItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 18px;
+  }
+
+  .historyItem img {
+    width: 50px;
+    margin-bottom: 8px;
+  }
+
+  .historyItemDetails h3 {
+    font-size: 20px;
+  }
+
+  .historyItemDetails p {
+    font-size: 16px;
+  }
+
+  .historyItemDetails ul {
+    font-size: 18px;
+  }
+
+  .skill {
+    width: 100px;
+    text-align: center;
+  }
+
+  .skillImageContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skillImageContainer img {
+    width: 50px;
+  }
+
+  .skill p {
+    font-size: 16px;
+  }
+}
+
+/* 🌟 RESPONSIVIDADE PARA TELAS MUITO PEQUENAS (Ex: 400px) */
+@media screen and (max-width: 500px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .historyItemDetails h3 {
+    font-size: 18px;
+  }
+
+  .historyItemDetails p {
+    font-size: 14px;
+  }
+
+  .historyItemDetails ul {
+    font-size: 16px;
+  }
+
+  .skill p {
+    font-size: 14px;
+  }
+}

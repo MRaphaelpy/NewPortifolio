@@ -1,0 +1,97 @@
+@import "../../vars.css";
+
+.container {
+  margin-top: 76px;
+  color: var(--color-text);
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  font-family: var(--font-primary);
+  color: var(--color-highlight-text, #ffffff);
+  margin-bottom: 20px;
+}
+
+.projects {
+  margin-top: 37px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.viewMoreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary, rgb(0, 183, 255)), var(--color-secondary, rgb(255, 48, 255)));
+  color: var(--color-button-text, #ffffff);
+  border: none;
+  padding: 14px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.25px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+}
+
+.viewMoreButton::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 70%);
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+}
+
+.viewMoreButton:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.viewMoreButton:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark, rgb(0, 123, 200)), var(--color-secondary-dark, rgb(200, 24, 200)));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+  letter-spacing: 1.5px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 28px;
+    color: var(--color-accent-light, #d1d1d1);
+  }
+
+  .projects {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .viewMoreButton {
+    padding: 12px 36px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,37 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .content {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .closeButton {
+    padding: 8px 16px;
+    background: #007acc;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: top 0.3s ease, left 0.3s ease;
+  }
+  
+  .closeButton:hover {
+    background: #005fa3;
+  }

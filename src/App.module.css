@@ -1,0 +1,67 @@
+@import "./vars.css";
+
+@keyframes themeTransition {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.App {
+  position: relative;
+  background-color: var(--color-bg);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.theme-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background);
+  animation: themeTransition 1s ease-in-out forwards;
+}
+
+.easterEggAlert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.alertContent {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.alertContent p {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.alertContent button {
+  padding: 8px 16px;
+  background: #007acc;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alertContent button:hover {
+  background: #005fa3;
+}

@@ -1,0 +1,241 @@
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 61px;
+  z-index: 2;
+  margin: 0 10%;
+  transition: padding 0.3s ease-in-out;
+}
+
+.languageOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  animation: flashScreen 0.8s forwards;
+  z-index: 9999;
+}
+
+@keyframes flashScreen {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: var(--color-primary);
+}
+
+.menuBtn {
+  display: block;
+}
+
+.menu {
+  display: flex;
+}
+
+.menuItems {
+  display: flex;
+  gap: 47px;
+  list-style: none;
+}
+
+.menuItems a {
+  font-size: 25px;
+  color: var(--color-text);
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menuItems a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.menuItems a:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.menuItems a:hover::after {
+  width: 100%;
+}
+
+.menuItems li {
+  display: flex;
+  align-items: center;
+}
+
+.langBtn, .themeBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--color-text);
+  margin-left: 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.langBtn:hover, .themeBtn:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+  background: rgba(90, 24, 154, 0.1);
+}
+
+/* Media query para tablets (e.g. iPad Pro 11) */
+@media screen and (min-width: 831px) and (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    margin: 0 5%;
+  }
+
+  .title {
+    font-size: 28px;
+    letter-spacing: 0.75px;
+  }
+
+  /* Exibe o menu de forma fixa na tela, sem o comportamento dropdown */
+  .menu {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    background: transparent;
+    box-shadow: none;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    padding: 0;
+  }
+  
+  .menuItems {
+    gap: 30px;
+  }
+  
+  .menuItems a {
+    font-size: 20px;
+  }
+  
+  .menuBtn {
+    display: none;
+  }
+  
+  .langBtn, .themeBtn {
+    font-size: 16px;
+    padding: 4px;
+    margin-left: 8px;
+  }
+}
+
+/* Media query para telas menores (celulares) */
+@media screen and (max-width: 830px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 30px;
+  }
+
+  .menu {
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 11px;
+    z-index: 3;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 10px;
+    padding: 24px 33px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menuOpen {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .menuBtn {
+    display: block;
+  }
+
+  .menuItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .menuItems li a {
+    font-size: 22px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .menuItems li a:hover {
+    transform: scale(1.05);
+    color: var(--color-primary);
+  }
+}
+
+.langBtn.active {
+  background-color: var(--color-primary);
+  color: #fff; 
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.themeOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--color-background);
+  z-index: 9999;
+  animation: themeSlideUp 1s forwards ease-in-out;
+}
+
+@keyframes themeSlideUp {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}

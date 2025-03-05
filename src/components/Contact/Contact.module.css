@@ -1,0 +1,142 @@
+@import "../../vars.css";
+
+/* Estilização base no estilo Material Design */
+.container {
+  margin-top: 60px;
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 48px 10%;
+  gap: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.text {
+  flex: 1;
+  text-align: left;
+}
+
+.text h2 {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: solid white;
+  margin-bottom: 12px;
+}
+
+.text p {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+/* Links de contato com estilo Material */
+.links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  gap: 20px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.link img {
+  width: 40px;
+  height: 40px;
+}
+
+.link a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link a:hover {
+  color: var(--color-primary);
+}
+
+/* 🌟 RESPONSIVIDADE PARA TABLETS E MOBILE */
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 8%;
+    gap: 28px;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .text h2 {
+    font-size: 48px;
+  }
+
+  .text p {
+    font-size: 20px;
+  }
+
+  .links {
+    align-items: center;
+  }
+
+  .link {
+    gap: 14px;
+    padding: 10px;
+  }
+
+  .link img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .link a {
+    font-size: 20px;
+  }
+}
+
+/* 🌟 RESPONSIVIDADE PARA TELAS MUITO PEQUENAS (Ex: 400px) */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 32px 6%;
+  }
+
+  .text h2 {
+    font-size: 40px;
+  }
+
+  .text p {
+    font-size: 18px;
+  }
+
+  .link img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .link a {
+    font-size: 18px;
+  }
+}
