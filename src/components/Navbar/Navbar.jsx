@@ -47,10 +47,16 @@ export const Navbar = () => {
         Marcos Raphael
       </a>
       <div className={styles.menu}>
-        {/* <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)}>
+        {/* 
+        Se você usar o botão de menu para dispositivos móveis, pode descomentar:
+        <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />}
-        </button> */}
-        <ul className={`${styles.menuItems} ${menuOpen ? styles.menuOpen : ""}`} onClick={() => setMenuOpen(false)}>
+        </button> 
+        */}
+        <ul
+          className={`${styles.menuItems} ${menuOpen ? styles.menuOpen : ""}`}
+          onClick={() => setMenuOpen(false)}
+        >
           <li>
             <a href="#about">{t("navbar.about")}</a>
           </li>
@@ -68,14 +74,18 @@ export const Navbar = () => {
               {t("Blog")}
             </a>
           </li>
-          <li>
-            <button className={`${styles.langBtn} ${styles.active}`} onClick={handleLanguageChange}>
-              {i18n.language === "pt" ? "PT" : "EN"}
-            </button>
-          </li>
         </ul>
       </div>
-      <Snackbar open={open} autoHideDuration={1200} onClose={handleClose} anchorOrigin={{ vertical: "bottom", horizontal: "center" }}>
+      {/* Botão de idioma movido para fora do container .menu */}
+      <button className={`${styles.langBtn} ${styles.active}`} onClick={handleLanguageChange}>
+        {i18n.language === "pt" ? "PT" : "EN"}
+      </button>
+      <Snackbar
+        open={open}
+        autoHideDuration={1200}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
         <div style={{ width: "100%" }}>
           <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
             {t("alerts.criacao")}
