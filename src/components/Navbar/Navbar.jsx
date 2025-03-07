@@ -48,7 +48,6 @@ export const Navbar = () => {
       </a>
       <div className={styles.menu}>
         {/* 
-        Se você usar o botão de menu para dispositivos móveis, pode descomentar:
         <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />}
         </button> 
@@ -76,7 +75,6 @@ export const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* Botão de idioma movido para fora do container .menu */}
       <button className={`${styles.langBtn} ${styles.active}`} onClick={handleLanguageChange}>
         {i18n.language === "pt" ? "PT" : "EN"}
       </button>
