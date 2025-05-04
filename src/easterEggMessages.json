@@ -1,0 +1,351 @@
+{
+    "easterEggMessages": [
+      {
+        "attempts": 3,
+        "message": "Persistente, hein?"
+      },
+      {
+        "attempts": 5,
+        "message": "Isso pode levar o dia todo..."
+      },
+      {
+        "attempts": 7,
+        "message": "Se esforço fosse clique, você já teria quebrado o botão!"
+      },
+      {
+        "attempts": 8,
+        "message": "Você realmente não vai conseguir..."
+      },
+      {
+        "attempts": 10,
+        "message": "Talvez você deveria tentar algo mais produtivo?"
+      },
+      {
+        "attempts": 12,
+        "message": "Sua determinação é admirável, mas inútil!"
+      },
+      {
+        "attempts": 15,
+        "message": "Ok, vou dar uma dica: tente usar Tab + Enter"
+      },
+      {
+        "attempts": 17,
+        "message": "Alguns dizem que este botão ainda está fugindo da primeira pessoa que tentou clicar nele."
+      },
+      {
+        "attempts": 18,
+        "message": "Desistir não é uma opção para você, né?"
+      },
+      {
+        "attempts": 20,
+        "message": "Uau! Você é realmente teimoso(a)..."
+      },
+      {
+        "attempts": 22,
+        "message": "Esse botão foi treinado pela mesma pessoa que treinou o Neo a desviar de balas."
+      },
+      {
+        "attempts": 23,
+        "message": "Nem eu acreditei que alguém chegaria até aqui!"
+      },
+      {
+        "attempts": 25,
+        "message": "Última dica: toque na tecla ESC"
+      },
+      {
+        "attempts": 27,
+        "message": "Você poderia ter assistido o trailer de um filme nesse tempo."
+      },
+      {
+        "attempts": 30,
+        "message": "Isso já está virando um caso de estudo psicológico."
+      },
+      {
+        "attempts": 33,
+        "message": "Se persistência fosse dinheiro, você seria trilionário!"
+      },
+      {
+        "attempts": 35,
+        "message": "Você poderia estar aprendendo JavaScript nesse tempo."
+      },
+      {
+        "attempts": 38,
+        "message": "Você está ciente que existem outros sites na internet, certo?"
+      },
+      {
+        "attempts": 40,
+        "message": "Acho que você realmente gosta deste jogo!"
+      },
+      {
+        "attempts": 42,
+        "message": "A resposta para a vida, o universo e tudo mais é 42. Não, não é 'clicar neste botão'."
+      },
+      {
+        "attempts": 45,
+        "message": "Se está procurando um Easter egg no Easter egg, parabéns, achou!"
+      },
+      {
+        "attempts": 47,
+        "message": "Este botão foi programado por um ex-desenvolvedor de Dark Souls."
+      },
+      {
+        "attempts": 50,
+        "message": "50 tentativas? Sério? Vou considerar isso um recorde."
+      },
+      {
+        "attempts": 55,
+        "message": "Lembra daquela vez que você disse que nunca desiste? Estou impressionado!"
+      },
+      {
+        "attempts": 60,
+        "message": "Sua mãe sabe que você passa o tempo assim?"
+      },
+      {
+        "attempts": 65,
+        "message": "Esta é a versão botão de 'Eu consigo fazer isso o dia todo'."
+      },
+      {
+        "attempts": 70,
+        "message": "Você sabia que este botão foi programado para nunca ser clicável?"
+      },
+      {
+        "attempts": 75,
+        "message": "Enquanto isso, alguém concluiu um bootcamp inteiro de programação..."
+      },
+      {
+        "attempts": 80,
+        "message": "Tudo bem, você venceu! Estou cansado... brincadeira, continue tentando!"
+      },
+      {
+        "attempts": 85,
+        "message": "Esse botão é tipo seu crush - sempre fugindo de você!"
+      },
+      {
+        "attempts": 90,
+        "message": "Isso é literalmente a definição de insanidade: fazer a mesma coisa repetidamente esperando resultados diferentes."
+      },
+      {
+        "attempts": 95,
+        "message": "Tenho que admitir, sua persistência é mais impressionante que um bug em produção na sexta-feira."
+      },
+      {
+        "attempts": 100,
+        "message": "🏆 CONQUISTA DESBLOQUEADA: Persistência Patológica Nível 100"
+      },
+      {
+        "attempts": 110,
+        "message": "Pare o que está fazendo e ligue para o Guinness Book agora mesmo!"
+      },
+      {
+        "attempts": 120,
+        "message": "Eu desisto. Você não. Claramente."
+      },
+      {
+        "attempts": 130,
+        "message": "Alô? NASA? Encontrei alguém para a missão para Marte. Não desiste NUNCA!"
+      },
+      {
+        "attempts": 140,
+        "message": "Você poderia ter aprendido a tocar 'Parabéns pra você' no violão neste tempo."
+      },
+      {
+        "attempts": 150,
+        "message": "🥇 CONQUISTA SUPREMA: Você é oficialmente o ser humano mais persistente do planeta."
+      },
+      {
+        "attempts": 200,
+        "message": "INACREDITÁVEL! O desenvolvedor acaba de cair da cadeira."
+      },
+      {
+        "attempts": 250,
+        "message": "🌟 MODO SECRETO DESBLOQUEADO: Na verdade não, continue tentando."
+      }
+    ],
+    "randomMessages": [
+      "Mais rápido que isso, por favor!",
+      "Quase pegou dessa vez... não, brincadeira!",
+      "Nem em um milhão de anos...",
+      "Reflexos de um gato... de pelúcia!",
+      "Você é mais lento que compilação de C++!",
+      "Talvez em outra dimensão você consiga clicar.",
+      "Esse botão tem PhD em esquiva!",
+      "Já pensou em desistir? Seria mais fácil...",
+      "Até minha avó clicaria mais rápido!",
+      "Por favor, continue! Estou me divertindo muito!",
+      "Se determinação resolvesse bugs, você seria um ótimo programador.",
+      "Você é o tipo de pessoa que ainda procura o fim do arco-íris?",
+      "Posso ficar aqui o dia todo... literalmente, sou um programa.",
+      "Que tal tentar algo mais fácil? Como hackear a NASA?",
+      "Dizem que a paciência é uma virtude. Você é praticamente um santo!",
+      "Botão: 1 - Você: 0",
+      "Se eu tivesse um Bitcoin para cada tentativa sua...",
+      "Cá entre nós, o botão é treinado em técnicas ninja.",
+      "Isso não é um bug, é um feature!",
+      "Tente clicar onde o botão VAI ESTAR, não onde ele está!",
+      "Tá jogando xadrez 4D com um botão HTML...",
+      "Sabe aquela sensação de quando você sonha que está correndo mas não sai do lugar?",
+      "Aposto que você também tenta pegar o arco-íris!",
+      "É oficial: você é mais teimoso que meu cachorro querendo petiscos.",
+      "Se tentativa fosse commit, seu GitHub seria verde o ano todo!",
+      "Pensa pelo lado positivo: você está melhorando sua coordenação motora!",
+      "Você seria um excelente beta tester de jogos impossíveis!",
+      "Sabe aquele jogo do dinossauro do Chrome? Ele é mais fácil que isso.",
+      "Este botão fez um curso intensivo de esquiva na Escola Brasileira de Futebol.",
+      "Pelo menos seu mouse está tendo um bom exercício hoje.",
+      "Seu cursor deve estar exausto agora!",
+      "Esse botão está te enganando mais que político em época de eleição!",
+      "Você é daqueles que assistiu 'Procurando Nemo' achando que ia achar mesmo?",
+      "Sua perseverança me lembra meu carregador de celular procurando a entrada USB no escuro.",
+      "Se prêmio Nobel de Teimosia existisse...",
+      "Fato: Este botão foi treinado por ninjas e mestres Jedi.",
+      "Ei, ouvi dizer que o botão 'Fechar' do seu vizinho é mais fácil de clicar!",
+      "Em algum lugar, um gato está rindo da sua tentativa de pegar o laser vermelho.",
+      "O botão está sussurrando: 'Nem chegue perto'.",
+      "Confesse: você também tenta pegar mosquitos com os dedos em vez de usar o mata-moscas.",
+      "Isso é tipo tentar pegar água com uma peneira.",
+      "Você já tentou dialogar com o botão? Talvez ele só precise de um amigo.",
+      "Psiu... o botão não gosta de você. Nada pessoal.",
+      "Já tentou escrever um poema para o botão? Ele pode ser sensível à arte.",
+      "Sabe esse tempo? Poderia estar mandando memes no grupo da família.",
+      "Algumas pessoas coletam selos, você coleta tentativas frustradas.",
+      "O botão perguntou se você não tem mais o que fazer... eu respondi que não.",
+      "A lenda diz que quem consegue clicar neste botão também consegue dividir por zero.",
+      "Este é o motivo pelo qual os aliens não nos visitam.",
+      "Você é o tipo de pessoa que tenta empurrar uma porta que diz 'puxe', né?",
+      "Ei, o ano 3000 ligou. Eles ainda estão esperando você desistir.",
+      "O botão mandou dizer que vai estar ocupado pelos próximos... sempre.",
+      "Você já considerou uma carreira como caçador de Pokémon?",
+      "Na escala de 1 a 10 de teimosia, você é um π: irracional e infinito!",
+      "Você deve ser ótimo em relacionamentos: nunca desiste mesmo quando é óbvio que não vai dar certo!",
+      "Sua determinação faria o Capitão América orgulhoso!",
+      "O botão está se divertindo mais que você neste momento.",
+      "Até o Internet Explorer carrega mais rápido do que você clica!",
+      "Um minuto de silêncio para o seu tempo livre que está sendo desperdiçado...",
+      "O botão te viu chegando há três esquinas de distância!",
+      "O botão está usando a 'Força' para sentir suas intenções antes de você agir.",
+      "Notícia de última hora: pessoa passa horas tentando clicar em algo inclicável!",
+      "Você está tão perto! (Este é o botão mentindo para você)",
+      "O botão perguntou se você não tem Netflix para assistir.",
+      "Sua dedicação me faz questionar suas escolhas de vida.",
+      "O botão sugeriu que você arrume um hobby. Eu concordo.",
+      "Acho que o botão e você precisam de um tempo separados...",
+      "Tem certeza que não tem uma série para maratonar?",
+      "A física quântica é mais fácil de entender do que por que você ainda está tentando.",
+      "Estatisticamente, há maior probabilidade de você ganhar na loteria do que clicar nesse botão.",
+      "Chuck Norris conseguiria clicar nesse botão. Mas você não é o Chuck Norris.",
+      "O botão pediu para avisar que ele tem compromisso para o resto da eternidade.",
+      "Se persistência queimasse calorias, você estaria em ótima forma!",
+      "Dizem que o botão foi inspirado no movimento de uma barata quando você acende a luz.",
+      "Fofoca: o botão acha que você não é rápido o suficiente.",
+      "Você já pensou em escrever um livro: '1001 maneiras de não conseguir clicar em um botão'?",
+      "O botão está postando sobre você no Twitter: #NãoDesiste #MandaAjuda",
+      "Se você pudesse converter tentativas em Bitcoin, estaria milionário agora!",
+      "O botão está se sentindo como uma celebridade fugindo de paparazzi!"
+    ],
+    "specialEvents": [
+      {
+        "attempts": 13,
+        "type": "button_change",
+        "effect": "super_speed",
+        "message": "⚡ ATIVADO: Modo Super Velocidade!"
+      },
+      {
+        "attempts": 26,
+        "type": "visual_change",
+        "effect": "button_duplicate",
+        "message": "🧙‍♂️ ILUSÃO: Qual é o botão verdadeiro?"
+      },
+      {
+        "attempts": 37,
+        "type": "difficulty",
+        "effect": "zigzag_mode",
+        "message": "🐍 ATIVADO: Modo Cobra! O botão agora se move em zigue-zague!"
+      },
+      {
+        "attempts": 49,
+        "type": "visual_change",
+        "effect": "shrink_button",
+        "message": "🔍 ATIVADO: Modo Diminuição! O botão está encolhendo..."
+      },
+      {
+        "attempts": 66,
+        "type": "difficulty",
+        "effect": "predict_movement",
+        "message": "🔮 ATIVADO: O botão agora lê sua mente! (Ok, só o movimento do seu mouse)"
+      },
+      {
+        "attempts": 77,
+        "type": "button_change",
+        "effect": "invisible_button",
+        "message": "👻 ATIVADO: Modo Fantasma! Onde está o botão?"
+      },
+      {
+        "attempts": 88,
+        "type": "joke",
+        "effect": "fake_crash",
+        "message": "⚠️ ERRO: Task_ClickButton.exe parou de funcionar... Reiniciando... Brincadeira!"
+      }
+    ],
+    "endGameMessages": [
+      "Parabéns! Você conseguiu fechar o que não deveria ser fechável. Impressionante!",
+      "Contra todas as probabilidades, você venceu um botão HTML. Que conquista!",
+      "Ufa! Finalmente acabou. Seu prêmio é... voltar a fazer algo útil!",
+      "Você acabou de gastar valiosos minutos da sua vida. Espero que tenha valido a pena!",
+      "O desenvolvedor perdeu a aposta. Ele achou que ninguém seria tão persistente.",
+      "Você agora é oficialmente qualificado para testar interfaces impossíveis!",
+      "E assim termina a épica batalha entre humano e botão. O vencedor? O tempo perdido.",
+      "Um sábio disse uma vez: 'A vitória não está em vencer o jogo, mas em saber quando parar'. Claramente, você ignorou esse conselho.",
+      "Parabéns! Você derrotou um pedaço de código JavaScript. Adicione isso ao seu LinkedIn imediatamente!",
+      "O botão se rende à sua incrível persistência. Ele está em posição fetal chorando em algum canto do DOM.",
+      "Sua técnica de 'tentativa e nunca desistir' impressionou até a inteligência artificial que criou este jogo!",
+      "Você despendeu tanto tempo nisso que o desenvolvedor se sentiu mal e adicionou esta saída de emergência.",
+      "Vitória por esgotamento! O botão simplesmente não aguentou mais fugir.",
+      "Em algum lugar, um desenvolvedor está revisando seu código e pensando: 'Como alguém conseguiu fechar isso?'",
+      "Sua persistência é tão incrível que o botão decidiu tirar férias permanentes.",
+      "Você sabe que não ganhou nada por isso, certo? Absolutamente nada. Mesmo assim, parabéns!",
+      "Novo recorde estabelecido: 'Maior tempo gasto em uma tarefa completamente inútil'!",
+      "Sua família está orgulhosa? Porque o botão certamente não está.",
+      "Créditos finais: Nenhum botão foi prejudicado durante esta experiência... apenas seu tempo livre.",
+      "Satisfeito(a)? Espero que sim, porque este é literalmente o fim do jogo. Não há mais nada aqui."
+    ],
+    "ragequitMessages": [
+      "Ah, finalmente desistiu? O botão vai sentir sua falta... ou não.",
+      "Decisão sábia. Era isso ou ficar aqui até o fim dos tempos.",
+      "O botão acaba de comemorar sua desistência com uma dancinha.",
+      "Parabéns por recuperar sua sanidade!",
+      "O tempo que você gastou aqui poderia ter sido usado para fazer... literalmente qualquer outra coisa.",
+      "O botão mandou dizer: 'Volte sempre... para perder mais tempo!'",
+      "Einstein disse que insanidade é fazer a mesma coisa repetidas vezes esperando resultados diferentes. Você quase provou que ele estava errado!",
+      "Quem desiste também vence... sua vida de volta!"
+    ],
+    "settings": {
+      "randomMessageProbability": 0.3,
+      "enableSoundEffects": true,
+      "maxAttemptsBeforeGiveUp": 20,
+      "buttonMovementSpeed": "medium",
+      "enableSpecialEvents": true,
+      "specialEventProbability": 0.2,
+      "useFrustrationDetection": true,
+      "enableConfetti": true
+    },
+    "onlyForDevelopers": {
+      "secretMessage": "Você achou o verdadeiro Easter egg! Este é um comentário para desenvolvedores. Se você está lendo isso, provavelmente está inspecionando o código-fonte ou o JSON. Parabéns, você é o tipo certo de curioso!",
+      "hiddenCommands": [
+        {
+          "code": "konami",
+          "sequence": "ArrowUp,ArrowUp,ArrowDown,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a",
+          "effect": "makeButtonClickable"
+        },
+        {
+          "code": "developer",
+          "sequence": "d,e,v",
+          "effect": "showDebugInfo"
+        }
+      ]
+    },
+    "analytics": {
+      "averageAttempts": 23,
+      "maxRecorded": 347,
+      "ragequitRate": "78%"
+    }
+  }

@@ -1,62 +1,108 @@
 .navbar {
-  position: relative;
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 61px;
-  z-index: 2;
-  margin: 0 10%;
-  transition: padding 0.3s ease-in-out;
+  padding: 25px 10%;
+  z-index: 1000;
+  background-color: rgba(var(--color-background-rgb), 0.95);
+
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.navbar.scrolled {
+  padding: 15px 10%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .languageOverlay {
   position: fixed;
   inset: 0;
   background-color: #fff;
-  animation: flashScreen 0.8s forwards;
+  animation: flashScreen 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
   z-index: 9999;
 }
 
+.navigationContainer {
+  display: flex;
+  align-items: center;
+}
+
 @keyframes flashScreen {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
+  0% { opacity: 0.9; }
+  50% { opacity: 2.0; }
   100% { opacity: 0; }
 }
 
 .title {
-  font-size: 30px;
+  font-size: 1.8rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--color-text);
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .title:hover {
   color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.title:hover::after {
+  width: 100%;
 }
 
 .menuBtn {
-  display: block;
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.menuBtn:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  transform: scale(1.05);
 }
 
 .menu {
   display: flex;
+  align-items: center;
 }
 
 .menuItems {
   display: flex;
-  gap: 47px;
+  gap: 40px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menuItems a {
-  font-size: 25px;
+  font-size: 1.2rem;
   color: var(--color-text);
   text-decoration: none;
   position: relative;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 5px 0;
 }
 
 .menuItems a::after {
@@ -65,14 +111,14 @@
   width: 0;
   height: 2px;
   background-color: var(--color-primary);
-  bottom: -5px;
+  bottom: -2px;
   left: 0;
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .menuItems a:hover {
   color: var(--color-primary);
-  transform: scale(1.1);
+  transform: translateY(-3px);
 }
 
 .menuItems a:hover::after {
@@ -84,50 +130,59 @@
   align-items: center;
 }
 
-.langBtn, .themeBtn {
+.langBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   color: var(--color-text);
-  margin-left: 10px;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 5px;
-  border-radius: 6px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
-.langBtn:hover, .themeBtn:hover {
-  color: var(--color-primary);
-  transform: scale(1.1);
-  background: rgba(90, 24, 154, 0.1);
+.langBtn:hover {
+  background-color: rgba(var(--color-primary-rgb), 0.15);
+  transform: translateY(-2px);
 }
 
-/* Media query para tablets (e.g. iPad Pro 11) */
+.langBtn.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.langIcon {
+  margin-right: 4px;
+}
+
+.snackbarContent {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 4px;
+}
+
+/* Media query for tablets (e.g. iPad Pro 11) */
 @media screen and (min-width: 831px) and (max-width: 1024px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
-    padding-top: 40px;
-    margin: 0 5%;
+    padding: 20px 5%;
+  }
+  
+  .navbar.scrolled {
+    padding: 15px 5%;
   }
 
   .title {
-    font-size: 28px;
-    letter-spacing: 0.75px;
-  }
-
-  /* Exibe o menu de forma fixa na tela, sem o comportamento dropdown */
-  .menu {
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    background: transparent;
-    box-shadow: none;
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    padding: 0;
+    font-size: 1.6rem;
   }
   
   .menuItems {
@@ -135,130 +190,128 @@
   }
   
   .menuItems a {
-    font-size: 20px;
+    font-size: 1.1rem;
   }
   
   .menuBtn {
     display: none;
   }
-  
-  .langBtn {
-    position: absolute;
-    right: 10%;
-    
-    left: 10;
-    top: 70px; 
-    display: block;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-  }
 }
 
-/* Media query para telas menores (celulares) */
+/* Media query for smaller screens (mobile) */
 @media screen and (max-width: 830px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 30px;
+    padding: 20px 5%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar.scrolled {
+    padding: 12px 5%;
   }
 
-  .menu {
-    position: absolute;
-    right: 0;
-    margin-right: 10%;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 11px;
-    z-index: 3;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    border-radius: 10px;
-    padding: 24px 33px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .menuOpen {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  .title {
+    font-size: 1.5rem;
   }
 
   .menuBtn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    order: 2;
+    z-index: 1001;
+  }
+
+  .navigationContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 75%;
+    max-width: 320px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
+
+  .menuOpen {
+    right: 0;
   }
 
   .menuItems {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 13px;
+    gap: 25px;
+    padding: 20px;
+    width: 100%;
   }
 
-  .menuItems li a {
-    font-size: 22px;
-    transition: color 0.3s ease, transform 0.3s ease;
+  .menuItems a {
+    font-size: 1.3rem;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
   }
 
-  .menuItems li a:hover {
+  .menuItems a::after {
+    background-color: white;
+    bottom: -5px;
+  }
+
+  .menuItems a:hover {
     transform: scale(1.05);
-    color: var(--color-primary);
   }
-}
 
-.langBtn.active {
-  background-color: var(--color-primary);
-  color: #fff; 
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.themeOverlay {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: var(--color-background);
-  z-index: 9999;
-  animation: themeSlideUp 1s forwards ease-in-out;
-}
-
-@keyframes themeSlideUp {
-  0% {
-    height: 0%;
-  }
-  100% {
-    height: 100%;
-  }
-}
-
-
-@media screen and (max-width: 830px) {
-  .navbar {
-    position: relative;
-  }
   .langBtn {
-    position: absolute;
-    right: 10%;
-    left: 70;
-    top: 35px; 
-    display: block;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
+    position: relative;
+    order: 3;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 400px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .langBtn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .langBtn .langIcon {
+    font-size: 0.9rem;
+  }
+  
+  .menuItems a {
+    font-size: 1.2rem;
   }
 }

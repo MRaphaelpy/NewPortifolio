@@ -1,37 +1,313 @@
 .container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out forwards;
+  backdrop-filter: blur(5px);
+}
+
+.content {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  background: linear-gradient(145deg, #121212, #1e1e1e);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.messageWrapper {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.messageContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 220px;
+  padding: 10px;
+}
+
+.message {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 10px 0;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+  font-weight: 500;
+}
+
+.newMessage {
+  color: #00bcd4;
+  animation: slideInMessage 0.5s ease-out forwards;
+}
+
+.closeButton {
+  position: absolute;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #007acc, #0058a3);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+  font-weight: bold;
+  font-size: 1rem;
+  min-width: 80px;
+  backdrop-filter: blur(5px);
+  z-index: 1005;
+}
+
+.closeButton:hover {
+  background: linear-gradient(135deg, #0091ea, #006fc1);
+  box-shadow: 0 6px 15px rgba(0, 122, 204, 0.4);
+  transform: scale(1.05);
+}
+
+.closeButton:focus {
+  outline: 3px solid #00bcd4;
+}
+
+.closeButton:active {
+  transform: scale(0.95);
+}
+
+.attemptCounter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: #00bcd4;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.attemptCounter span {
+  color: #ffffff;
+  margin-left: 5px;
+  display: inline-block;
+  min-width: 20px;
+}
+
+.giveUpButton {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInButton 3s 2s forwards;
+}
+
+.giveUpButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.closeAnimation {
+  animation: zoomOut 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideInMessage {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInButton {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 600px) {
+  .content {
+    width: 90%;
+    height: auto;
+    min-height: 300px;
+    padding: 20px;
   }
   
-  .content {
-    position: relative;
-    width: 400px;
-    height: 300px;
-    background: #000000;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  .message {
+    font-size: 1.2rem;
   }
   
   .closeButton {
     padding: 8px 16px;
-    background: #007acc;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: top 0.3s ease, left 0.3s ease;
+    font-size: 0.9rem;
   }
-  
-  .closeButton:hover {
-    background: #005fa3;
-  }
+}
+
+/* Accessibility - focus */
+:focus {
+  outline: 2px solid #00bcd4;
+  outline-offset: 2px;
+}
+
+/* Botões falsos */
+.fakeButton {
+  position: absolute;
+  z-index: 1002;
+}
+
+/* Tela de falha */
+.crashScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: glitchEffect 0.3s infinite;
+}
+
+.crashContent {
+  background-color: #000066;
+  border: 2px solid #fff;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.progressBar {
+  height: 20px;
+  background-color: #333;
+  margin: 15px 0;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background-color: #0066ff;
+  width: 0;
+  animation: progressAnimation 3s forwards;
+}
+
+/* Indicadores de modo */
+.konamiIndicator,
+.predictModeIndicator,
+.zigzagModeIndicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.predictModeIndicator {
+  top: 45px;
+  background-color: rgba(128, 0, 128, 0.7);
+}
+
+.zigzagModeIndicator {
+  top: 75px;
+  background-color: rgba(0, 128, 0, 0.7);
+}
+
+@keyframes glitchEffect {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes progressAnimation {
+  0% { width: 0; }
+  20% { width: 20%; }
+  50% { width: 37%; }
+  70% { width: 45%; }
+  100% { width: 100%; }
+}
