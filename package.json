@@ -17,7 +17,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.5",
-    "axios": "^1.7.9",
+    "axios": "^1.13.5",
     "canvas-confetti": "^1.9.3",
     "framer-motion": "^12.9.2",
     "i18next": "^24.2.2",
