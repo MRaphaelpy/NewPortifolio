@@ -7,6 +7,9 @@ import styles from "./Navbar.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import TranslateIcon from "@mui/icons-material/Translate";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { useTheme } from "../../context/ThemeContext";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -18,6 +21,7 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showLanguageFlash, setShowLanguageFlash] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,14 +114,28 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <button 
-        className={`${styles.langBtn} ${styles.active}`} 
-        onClick={handleLanguageChange}
-        aria-label={`Change language to ${i18n.language === "pt" ? "English" : "Portuguese"}`}
-      >
-        <TranslateIcon fontSize="small" className={styles.langIcon} />
-        <span>{i18n.language === "pt" ? "PT" : "EN"}</span>
-      </button>
+      <div className={styles.actionButtons}>
+        <button 
+          className={styles.themeBtn}
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        >
+          {theme === 'dark' ? (
+            <LightModeIcon fontSize="small" />
+          ) : (
+            <DarkModeIcon fontSize="small" />
+          )}
+        </button>
+
+        <button 
+          className={`${styles.langBtn} ${styles.active}`} 
+          onClick={handleLanguageChange}
+          aria-label={`Change language to ${i18n.language === "pt" ? "English" : "Portuguese"}`}
+        >
+          <TranslateIcon fontSize="small" className={styles.langIcon} />
+          <span>{i18n.language === "pt" ? "PT" : "EN"}</span>
+        </button>
+      </div>
       
       <Snackbar
         open={open}

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import styles from "./App.module.css";
 import { About } from "./components/About/About";
 import { Contact } from "./components/Contact/Contact";
@@ -10,9 +12,12 @@ import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton"
 import { Footer } from "./components/Footer/Footer";
 import FadeInSection from "./components/FadeInSection/FadeInSection";
 import EasterEggAlert from "./components/EasterEggAlert/EasterEggAlert";
+import { useTheme } from "./context/ThemeContext";
+import { darkTheme, lightTheme } from "./theme";
 
 function App() {
   const [showAlert, setShowAlert] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const konamiCode = [
@@ -45,24 +50,29 @@ function App() {
 
   const closeAlert = () => setShowAlert(false);
 
+  const muiTheme = theme === 'dark' ? darkTheme : lightTheme;
+
   return (
-    <div className={styles.App}>
-      {showAlert && <EasterEggAlert onClose={closeAlert} />}
-      <Navbar />
-      <Hero />
-      <About />
-      <FadeInSection>
-        <Experience />
-      </FadeInSection>
-      <FadeInSection>
-        <Projects />
-      </FadeInSection>
-      <FadeInSection>
-        <Contact />
-      </FadeInSection>
-      <ScrollToTopButton />
-      <Footer />
-    </div>
+    <MuiThemeProvider theme={muiTheme}>
+      <CssBaseline />
+      <div className={styles.App}>
+        {showAlert && <EasterEggAlert onClose={closeAlert} />}
+        <Navbar />
+        <Hero />
+        <About />
+        <FadeInSection>
+          <Experience />
+        </FadeInSection>
+        <FadeInSection>
+          <Projects />
+        </FadeInSection>
+        <FadeInSection>
+          <Contact />
+        </FadeInSection>
+        <ScrollToTopButton />
+        <Footer />
+      </div>
+    </MuiThemeProvider>
   );
 }
 

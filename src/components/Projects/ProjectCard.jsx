@@ -6,7 +6,6 @@ import styles from "./ProjectCard.module.css";
 export const ProjectCard = ({ project: { title, imageSrc, description, skills, demo, source } }) => {
   return (
     <Card className={styles.card}>
-      <div className={styles.glowOverlay}></div>
       <div className={styles.cardContent}>
         <CardMedia
           component="img"

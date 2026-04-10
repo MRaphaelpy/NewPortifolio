@@ -4,39 +4,38 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease-out forwards;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
 }
-
 .content {
   position: relative;
-  width: 500px;
-  height: 350px;
-  background: linear-gradient(145deg, #121212, #1e1e1e);
-  padding: 30px;
-  border-radius: 15px;
+  width: 520px;
+  height: 380px;
+  background-color: var(--md-sys-color-surface-container-high, #2B2930);
+  padding: 32px;
+  border-radius: var(--md-sys-shape-corner-extra-large, 28px);
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--md-sys-elevation-4, 0 6px 10px 4px rgba(0,0,0,0.15));
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: slideIn 0.4s cubic-bezier(0.05, 0.7, 0.1, 1) forwards;
 }
-
 .messageWrapper {
-  height: 220px;
+  height: 240px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+  background-color: var(--md-sys-color-surface-container, #211F26);
+  padding: 4px;
 }
-
 .messageContainer {
   position: absolute;
   bottom: 0;
@@ -44,266 +43,207 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 220px;
-  padding: 10px;
+  max-height: 240px;
+  padding: 12px;
 }
-
 .message {
-  font-size: 1.4rem;
-  color: #fff;
-  margin: 10px 0;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  animation: pulse 2s infinite;
-  font-weight: 500;
+  font-size: 1.125rem;
+  color: var(--md-sys-color-on-surface, #E6E0E9);
+  margin: 8px 0;
+  font-weight: 400;
+  line-height: 1.5;
+  animation: none;
 }
-
 .newMessage {
-  color: #00bcd4;
-  animation: slideInMessage 0.5s ease-out forwards;
+  color: var(--md-sys-color-primary, #D0BCFF);
+  font-weight: 500;
+  animation: slideInMessage 0.4s cubic-bezier(0.05, 0.7, 0.1, 1) forwards;
 }
-
 .closeButton {
   position: absolute;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #007acc, #0058a3);
+  padding: 10px 24px;
+  background-color: var(--md-sys-color-primary, #D0BCFF);
+  color: var(--md-sys-color-on-primary, #381E72);
   border: none;
-  color: #fff;
-  border-radius: 8px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
-  font-weight: bold;
-  font-size: 1rem;
-  min-width: 80px;
-  backdrop-filter: blur(5px);
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: var(--md-sys-elevation-2);
+  font-weight: 500;
+  font-size: 0.875rem;
+  min-width: 88px;
+  letter-spacing: 0.1px;
   z-index: 1005;
 }
-
 .closeButton:hover {
-  background: linear-gradient(135deg, #0091ea, #006fc1);
-  box-shadow: 0 6px 15px rgba(0, 122, 204, 0.4);
-  transform: scale(1.05);
+  box-shadow: var(--md-sys-elevation-3);
+  filter: brightness(1.08);
 }
-
 .closeButton:focus {
-  outline: 3px solid #00bcd4;
+  outline: 3px solid var(--md-sys-color-primary, #D0BCFF);
+  outline-offset: 2px;
 }
-
 .closeButton:active {
   transform: scale(0.95);
 }
-
 .attemptCounter {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 8px 15px;
+  background-color: var(--md-sys-color-surface-container-highest, #36343B);
+  padding: 6px 14px;
   border-radius: 20px;
-  color: #00bcd4;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: var(--md-sys-color-on-surface-variant, #CAC4D0);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
 }
-
 .attemptCounter span {
-  color: #ffffff;
-  margin-left: 5px;
+  color: var(--md-sys-color-primary, #D0BCFF);
+  margin-left: 4px;
   display: inline-block;
   min-width: 20px;
+  font-weight: 700;
 }
-
 .giveUpButton {
   position: absolute;
-  bottom: 20px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.6);
-  border-radius: 6px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid var(--md-sys-color-outline, #938F99);
+  color: var(--md-sys-color-on-surface-variant, #CAC4D0);
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
   opacity: 0;
-  animation: fadeInButton 3s 2s forwards;
+  animation: fadeInButton 2s 2s forwards;
+  letter-spacing: 0.1px;
 }
-
 .giveUpButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
+  background-color: var(--md-sys-color-surface-container-highest, #36343B);
+  color: var(--md-sys-color-on-surface, #E6E0E9);
+  border-color: var(--md-sys-color-on-surface-variant);
 }
-
 .closeAnimation {
-  animation: zoomOut 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+  animation: zoomOut 0.4s cubic-bezier(0.3, 0, 0.8, 0.15) forwards;
 }
-
-/* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
 @keyframes slideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(32px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
 }
-
-@keyframes pulse {
-  0% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.8;
-  }
-}
-
 @keyframes slideInMessage {
-  from {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
-
 @keyframes fadeInButton {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.7;
-  }
+  from { opacity: 0; }
+  to { opacity: 0.8; }
 }
-
 @keyframes zoomOut {
-  from {
-    transform: scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.9); opacity: 0; }
 }
-
-/* Media queries for responsiveness */
 @media screen and (max-width: 600px) {
   .content {
-    width: 90%;
+    width: 92%;
     height: auto;
-    min-height: 300px;
-    padding: 20px;
+    min-height: 320px;
+    padding: 24px;
+    border-radius: 24px;
   }
-  
   .message {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
-  
   .closeButton {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 8px 20px;
+    font-size: 0.8125rem;
   }
 }
-
-/* Accessibility - focus */
 :focus {
-  outline: 2px solid #00bcd4;
+  outline: 2px solid var(--md-sys-color-primary, #D0BCFF);
   outline-offset: 2px;
 }
-
-/* Botões falsos */
 .fakeButton {
   position: absolute;
   z-index: 1002;
 }
-
-/* Tela de falha */
 .crashScreen {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  animation: glitchEffect 0.3s infinite;
+  color: var(--md-sys-color-on-surface, #E6E0E9);
+  border-radius: var(--md-sys-shape-corner-extra-large, 28px);
 }
-
 .crashContent {
-  background-color: #000066;
-  border: 2px solid #fff;
-  padding: 20px;
-  width: 80%;
-  max-width: 500px;
+  background-color: var(--md-sys-color-error, #F2B8B5);
+  color: var(--md-sys-color-on-error, #601410);
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+  padding: 24px;
+  width: 85%;
+  max-width: 440px;
+  text-align: center;
 }
-
+.crashContent h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.crashContent p {
+  font-size: 0.875rem;
+  margin-top: 12px;
+}
 .progressBar {
-  height: 20px;
-  background-color: #333;
-  margin: 15px 0;
-  position: relative;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
 }
-
 .progress {
   height: 100%;
-  background-color: #0066ff;
+  background-color: var(--md-sys-color-on-error, #601410);
   width: 0;
+  border-radius: 4px;
   animation: progressAnimation 3s forwards;
 }
-
-/* Indicadores de modo */
 .konamiIndicator,
 .predictModeIndicator,
 .zigzagModeIndicator {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 12px;
+  top: 16px;
+  left: 16px;
+  background-color: var(--md-sys-color-tertiary-container, #633B48);
+  color: var(--md-sys-color-on-tertiary-container, #FFD8E4);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
 }
-
 .predictModeIndicator {
-  top: 45px;
-  background-color: rgba(128, 0, 128, 0.7);
+  top: 48px;
+  background-color: var(--md-sys-color-primary-container, #4F378B);
+  color: var(--md-sys-color-on-primary-container, #EADDFF);
 }
-
 .zigzagModeIndicator {
-  top: 75px;
-  background-color: rgba(0, 128, 0, 0.7);
+  top: 80px;
+  background-color: var(--md-sys-color-secondary-container, #4A4458);
+  color: var(--md-sys-color-on-secondary-container, #E8DEF8);
 }
-
-@keyframes glitchEffect {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  50% { transform: translateX(2px); }
-  75% { transform: translateX(-1px); }
-  100% { transform: translateX(0); }
-}
-
 @keyframes progressAnimation {
   0% { width: 0; }
   20% { width: 20%; }

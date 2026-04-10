@@ -1,220 +1,187 @@
+@import "../../vars.css";
 .navbar {
   position: sticky;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 10%;
+  padding: 16px 10%;
   z-index: 1000;
-  background-color: rgba(var(--color-background-rgb), 0.95);
-
-  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  background-color: var(--md-sys-color-surface);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, padding 0.2s ease;
 }
-
 .navbar.scrolled {
-  padding: 15px 10%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 12px 10%;
+  background-color: var(--md-sys-color-surface-container);
+  box-shadow: var(--md-sys-elevation-2);
 }
-
 .languageOverlay {
   position: fixed;
   inset: 0;
-  background-color: #fff;
-  animation: flashScreen 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+  background-color: var(--md-sys-color-surface);
+  animation: flashScreen 0.6s ease forwards;
   z-index: 9999;
 }
-
+@keyframes flashScreen {
+  0% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
 .navigationContainer {
   display: flex;
   align-items: center;
 }
-
-@keyframes flashScreen {
-  0% { opacity: 0.9; }
-  50% { opacity: 2.0; }
-  100% { opacity: 0; }
-}
-
 .title {
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 500;
   text-decoration: none;
-  color: var(--color-text);
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  position: relative;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: 0;
+  transition: color 0.2s ease;
 }
-
 .title:hover {
-  color: var(--color-primary);
-  transform: translateY(-2px);
+  color: var(--md-sys-color-primary);
 }
-
 .title::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--color-primary);
-  transition: width 0.3s ease;
+  display: none;
 }
-
-.title:hover::after {
-  width: 100%;
-}
-
 .menuBtn {
   display: none;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--color-text);
+  color: var(--md-sys-color-on-surface);
   padding: 8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
 }
-
 .menuBtn:hover {
-  background-color: rgba(var(--color-primary-rgb), 0.1);
-  transform: scale(1.05);
+  background-color: var(--md-sys-color-surface-container-high);
 }
-
 .menu {
   display: flex;
   align-items: center;
 }
-
 .menuItems {
   display: flex;
-  gap: 40px;
+  gap: 8px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .menuItems a {
-  font-size: 1.2rem;
-  color: var(--color-text);
+  font-size: 0.875rem;
+  color: var(--md-sys-color-on-surface-variant);
   text-decoration: none;
-  position: relative;
   font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  padding: 5px 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 8px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.1px;
 }
-
 .menuItems a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  bottom: -2px;
-  left: 0;
-  transition: width 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  display: none;
 }
-
 .menuItems a:hover {
-  color: var(--color-primary);
-  transform: translateY(-3px);
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-container-high);
+  transform: none;
 }
-
-.menuItems a:hover::after {
-  width: 100%;
-}
-
 .menuItems li {
   display: flex;
   align-items: center;
 }
-
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.themeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 40px;
+  height: 40px;
+}
+.themeBtn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+}
 .langBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  background: none;
+  gap: 6px;
+  background: var(--md-sys-color-surface-container-high);
   border: none;
-  font-size: 1rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
-  color: var(--color-text);
-  padding: 8px 15px;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 8px 16px;
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 .langBtn:hover {
-  background-color: rgba(var(--color-primary-rgb), 0.15);
-  transform: translateY(-2px);
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
 }
-
 .langBtn.active {
-  background-color: var(--color-primary);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  box-shadow: none;
 }
-
 .langIcon {
   margin-right: 4px;
 }
-
 .snackbarContent {
   width: 100%;
-  border-radius: 4px;
+  border-radius: var(--md-sys-shape-corner-medium);
   overflow: hidden;
 }
-
 .progressBar {
   height: 4px;
 }
-
-/* Media query for tablets (e.g. iPad Pro 11) */
 @media screen and (min-width: 831px) and (max-width: 1024px) {
   .navbar {
-    padding: 20px 5%;
+    padding: 16px 5%;
   }
-  
   .navbar.scrolled {
-    padding: 15px 5%;
+    padding: 12px 5%;
   }
-
   .title {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
-  
   .menuItems {
-    gap: 30px;
+    gap: 4px;
   }
-  
   .menuItems a {
-    font-size: 1.1rem;
+    font-size: 0.8125rem;
+    padding: 8px 12px;
   }
-  
   .menuBtn {
     display: none;
   }
 }
-
-/* Media query for smaller screens (mobile) */
 @media screen and (max-width: 830px) {
   .navbar {
-    padding: 20px 5%;
+    padding: 12px 5%;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
   }
-  
   .navbar.scrolled {
-    padding: 12px 5%;
+    padding: 10px 5%;
   }
-
   .title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
-
   .menuBtn {
     display: flex;
     align-items: center;
@@ -223,95 +190,80 @@
     order: 2;
     z-index: 1001;
   }
-
   .navigationContainer {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin-right: 8px;
   }
-
   .menu {
     position: fixed;
     top: 0;
     right: -100%;
     height: 100vh;
-    width: 75%;
+    width: 80%;
     max-width: 320px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background-color: var(--md-sys-color-surface-container);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
-    transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    padding: 48px 0;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--md-sys-elevation-4);
     z-index: 1000;
   }
-
   .menuOpen {
     right: 0;
   }
-
   .menuItems {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
+    align-items: stretch;
+    gap: 4px;
+    padding: 16px 24px;
     width: 100%;
   }
-
   .menuItems a {
-    font-size: 1.3rem;
-    color: white;
+    font-size: 1rem;
+    color: var(--md-sys-color-on-surface);
     width: 100%;
-    text-align: center;
-    padding: 10px;
+    text-align: start;
+    padding: 14px 16px;
+    border-radius: var(--md-sys-shape-corner-large);
   }
-
-  .menuItems a::after {
-    background-color: white;
-    bottom: -5px;
-  }
-
   .menuItems a:hover {
-    transform: scale(1.05);
+    background-color: var(--md-sys-color-surface-container-high);
   }
-
   .langBtn {
     position: relative;
     order: 3;
-    padding: 6px 12px;
-    font-size: 0.9rem;
+    padding: 8px 14px;
+    font-size: 0.8125rem;
   }
-
-  @keyframes slideIn {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
+  .actionButtons {
+    order: 3;
+    gap: 4px;
+  }
+  .themeBtn {
+    width: 36px;
+    height: 36px;
   }
 }
-
-/* Small mobile devices */
 @media screen and (max-width: 400px) {
   .title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
-  
   .langBtn {
-    padding: 5px 10px;
-    font-size: 0.8rem;
+    padding: 6px 12px;
+    font-size: 0.75rem;
   }
-  
-  .langBtn .langIcon {
-    font-size: 0.9rem;
+  .themeBtn {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
   }
-  
   .menuItems a {
-    font-size: 1.2rem;
+    font-size: 0.9375rem;
   }
 }

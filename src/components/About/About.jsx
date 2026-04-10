@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { TbLayout, TbServer, TbColorSwatch } from "react-icons/tb";
 import styles from "./About.module.css";
 import { getImageUrl } from "../../utils";
 
@@ -24,7 +25,7 @@ export const About = () => {
           if (entry.isIntersecting) {
             setTimeout(() => {
               entry.target.classList.add(styles.itemVisible);
-            }, index * 150);
+            }, index * 100);
           }
         });
       },
@@ -59,77 +60,48 @@ export const About = () => {
 
   return (
     <section className={styles.container} id="about" ref={sectionRef}>
-      <div className={styles.backgroundElements}>
-        <div className={styles.gradientOrb1}></div>
-        <div className={styles.gradientOrb2}></div>
-        <div className={styles.gridPattern}></div>
-      </div>
-
       <div className={styles.headingWrapper} ref={addToRefs}>
-        <h2 className={styles.title}>{t('about.title')}</h2>
-        <div className={styles.underline}></div>
+        <h2 className={styles.title}>{t("about.title")}</h2>
       </div>
 
       <div className={styles.content}>
         <div className={styles.imageContainer} ref={addToRefs}>
-          <div className={styles.imageFrame}>
-            <div className={styles.imageBorder}></div>
-            <img
-              src={getImageUrl("about/aboutImage.png")}
-              alt="Me sitting with a laptop"
-              className={styles.aboutImage}
-            />
-          </div>
-          <div className={styles.imageGlow}></div>
+          <img
+            src={getImageUrl("about/aboutImage.png")}
+            alt="Me sitting with a laptop"
+            className={styles.aboutImage}
+          />
         </div>
 
         <ul className={styles.aboutItems}>
           <li className={styles.aboutItem} ref={addToRefs}>
             <div className={styles.iconContainer}>
-              <img
-                src={getImageUrl("about/cursorIcon.png")}
-                alt="Cursor icon"
-                className={styles.icon}
-              />
-              <div className={styles.iconGlow}></div>
+              <TbLayout size={28} strokeWidth={1.5} className={styles.iconSvg} />
             </div>
             <div className={styles.aboutItemText}>
-              <h3>{t('about.frontendTitle')}</h3>
-              <p>{t('about.frontendDescription')}</p>
+              <h3>{t("about.frontendTitle")}</h3>
+              <p>{t("about.frontendDescription")}</p>
             </div>
-            <div className={styles.itemHighlight}></div>
           </li>
 
           <li className={styles.aboutItem} ref={addToRefs}>
             <div className={styles.iconContainer}>
-              <img
-                src={getImageUrl("about/serverIcon.png")}
-                alt="Server icon"
-                className={styles.icon}
-              />
-              <div className={styles.iconGlow}></div>
+              <TbServer size={28} strokeWidth={1.5} className={styles.iconSvg} />
             </div>
             <div className={styles.aboutItemText}>
-              <h3>{t('about.backendTitle')}</h3>
-              <p>{t('about.backendDescription')}</p>
+              <h3>{t("about.backendTitle")}</h3>
+              <p>{t("about.backendDescription")}</p>
             </div>
-            <div className={styles.itemHighlight}></div>
           </li>
 
           <li className={styles.aboutItem} ref={addToRefs}>
             <div className={styles.iconContainer}>
-              <img
-                src={getImageUrl("about/cursorIcon.png")}
-                alt="UI icon"
-                className={styles.icon}
-              />
-              <div className={styles.iconGlow}></div>
+              <TbColorSwatch size={28} strokeWidth={1.5} className={styles.iconSvg} />
             </div>
             <div className={styles.aboutItemText}>
-              <h3>{t('about.uiTitle')}</h3>
-              <p>{t('about.uiDescription')}</p>
+              <h3>{t("about.uiTitle")}</h3>
+              <p>{t("about.uiDescription")}</p>
             </div>
-            <div className={styles.itemHighlight}></div>
           </li>
         </ul>
       </div>

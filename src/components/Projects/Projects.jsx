@@ -38,10 +38,6 @@ export const Projects = () => {
 
   return (
     <section className={styles.container} id="projects">
-      <div className={styles.background}>
-        <div className={styles.glow}></div>
-      </div>
-      
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
