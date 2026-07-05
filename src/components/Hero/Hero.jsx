@@ -35,7 +35,7 @@ export const Hero = () => {
 
         <div className={styles.buttons}>
           <a
-            href="https://drive.google.com/file/d/1acuU2e1nhxiGa1zjTt7bhQcmWim8S8oQ/view?usp=sharing"
+            href="https://drive.google.com/file/d/1M6y6fW71RwGRvm8rVQe1WWw-xn3a7EpG/view?usp=sharing"
             className={styles.resumeBtn}
             target="_blank"
             rel="noopener noreferrer"

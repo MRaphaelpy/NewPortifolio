@@ -14,11 +14,16 @@ import FadeInSection from "./components/FadeInSection/FadeInSection";
 import EasterEggAlert from "./components/EasterEggAlert/EasterEggAlert";
 import { useTheme } from "./context/ThemeContext";
 import { darkTheme, lightTheme } from "./theme";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [showAlert, setShowAlert] = useState(false);
   const { theme } = useTheme();
 
+  <Toaster
+  position="bottom-center"
+  reverseOrder={false}
+/>
   useEffect(() => {
     const konamiCode = [
       'ArrowUp', 'ArrowUp',
