@@ -1,75 +1,73 @@
-import React, { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import styles from "./Hero.module.css";
+import { TbFileText, TbMail } from "react-icons/tb";
+import { site } from "../../config/site";
+import { motionTokens, STAGGER_DELAY } from "../../styles/motion";
 import { getImageUrl } from "../../utils";
+import { Button } from "../ui/Button/Button";
+import { ExpressiveShape } from "../ui/ExpressiveShape/ExpressiveShape";
+import styles from "./Hero.module.css";
 
 export const Hero = () => {
   const { t } = useTranslation();
-  const containerRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 200);
-    return () => clearTimeout(timer);
-  }, []);
+  // O hero aparece no carregamento, então anima com "animate" em vez de
+  // esperar entrar na viewport como o <Reveal>.
+  const enter = (step) => ({
+    initial: prefersReducedMotion ? false : { opacity: 0, y: 32 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      y: { ...motionTokens.spatialDefault, delay: step * STAGGER_DELAY },
+      opacity: { ...motionTokens.effectsDefault, delay: step * STAGGER_DELAY },
+    },
+  });
 
   return (
-    <section
-      className={`${styles.container} ${isLoaded ? styles.loaded : ""}`}
-      ref={containerRef}
-    >
+    <header id="top" className={styles.container}>
       <div className={styles.content}>
-        <span className={styles.badge}>
-          {t("hero.title")}
-        </span>
+        <motion.span className={styles.badge} {...enter(0)}>
+          {t("hero.badge")}
+        </motion.span>
 
-        <h1 className={styles.title}>
-          {t("hero.title")}
-        </h1>
+        <motion.h1 className={styles.title} {...enter(1)}>
+          {t("hero.greeting")} <span className={styles.name}>{site.firstName}</span> :)
+        </motion.h1>
 
-        <p className={styles.description}>
+        <motion.p className={styles.description} {...enter(2)}>
           {t("hero.description")}
-        </p>
+        </motion.p>
 
-        <div className={styles.buttons}>
-          <a
-            href="https://drive.google.com/file/d/1M6y6fW71RwGRvm8rVQe1WWw-xn3a7EpG/view?usp=sharing"
-            className={styles.resumeBtn}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-            <span>{t("hero.resumeBtn")}</span>
-          </a>
-
-          <a
-            href="mailto:mraphael.py@gmail.com"
-            className={styles.contactBtn}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            <span>{t("hero.contactBtn")}</span>
-          </a>
-        </div>
+        <motion.div className={styles.buttons} {...enter(3)}>
+          <Button href={site.resumeUrl} external icon={TbFileText}>
+            {t("hero.resumeBtn")}
+          </Button>
+          <Button href={`mailto:${site.email}`} variant="outlined" icon={TbMail}>
+            {t("hero.contactBtn")}
+          </Button>
+        </motion.div>
       </div>
 
-      <div className={styles.heroImgContainer}>
+      <motion.div
+        className={styles.visual}
+        initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.6, rotate: -30 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{
+          default: { ...motionTokens.spatialSlow, delay: 0.1 },
+          opacity: motionTokens.effectsDefault,
+        }}
+      >
+        <ExpressiveShape className={styles.shape} />
+        <ExpressiveShape variant="cookie4" className={styles.shapeAccent} />
         <img
-          src={getImageUrl("hero/heroImage.png")}
+          src={getImageUrl("hero/heroImage.webp")}
           alt={t("hero.imageAlt")}
           className={styles.heroImg}
-          loading="eager"
+          width="960"
+          height="960"
+          fetchPriority="high"
         />
-      </div>
-    </section>
+      </motion.div>
+    </header>
   );
 };

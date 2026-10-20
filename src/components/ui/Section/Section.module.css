@@ -1,0 +1,33 @@
+.section {
+  width: 100%;
+  max-width: calc(var(--layout-max-width) + 2 * var(--layout-gutter));
+  margin: var(--layout-section-gap) auto 0;
+  padding: 0 var(--layout-gutter);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.title {
+  font-size: var(--md-sys-typescale-headline-size);
+  font-weight: var(--md-sys-typescale-headline-weight);
+  letter-spacing: var(--md-sys-typescale-headline-tracking);
+  line-height: 1.1;
+  color: var(--md-sys-color-on-surface);
+}
+
+.accent {
+  width: 56px;
+  height: 6px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-primary);
+}
+
+.description {
+  max-width: 560px;
+  color: var(--md-sys-color-on-surface-variant);
+}

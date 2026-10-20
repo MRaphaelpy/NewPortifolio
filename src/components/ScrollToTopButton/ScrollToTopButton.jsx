@@ -1,40 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Fab } from '@mui/material';
-import { KeyboardArrowUp } from '@mui/icons-material';
-import styles from './ScrollToTopButton.module.css';
+import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { TbArrowUp } from "react-icons/tb";
+import { useScrolledPast } from "../../hooks/useScrolledPast";
+import { motionTokens } from "../../styles/motion";
+import styles from "./ScrollToTopButton.module.css";
 
-const ScrollToTopButton = () => {
-    const [isVisible, setIsVisible] = useState(false);
+export const ScrollToTopButton = () => {
+  const { t } = useTranslation();
+  const isVisible = useScrolledPast(300);
 
-    const toggleVisibility = () => {
-        if (window.pageYOffset > 300) {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
-    };
-
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', toggleVisibility);
-        return () => window.removeEventListener('scroll', toggleVisibility);
-    }, []);
-
-    return (
-        <div className={styles.scrollToTop}>
-            {isVisible && (
-                <button onClick={scrollToTop} className={styles.scrollToTopButton}>
-                    <KeyboardArrowUp />
-                </button>
-            )}
-        </div>
-    );
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          className={styles.fab}
+          onClick={() => window.scrollTo({ top: 0 })}
+          aria-label={t("a11y.scrollToTop")}
+          initial={{ scale: 0, rotate: -90 }}
+          animate={{ scale: 1, rotate: 0 }}
+          exit={{ scale: 0, rotate: 90 }}
+          transition={motionTokens.spatialFast}
+        >
+          <TbArrowUp aria-hidden="true" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
 };
-
-export default ScrollToTopButton;

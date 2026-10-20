@@ -1,0 +1,75 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: var(--md-sys-typescale-label-size);
+  font-weight: var(--md-sys-typescale-label-weight);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-radius var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-spatial),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-effects),
+    box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-effects);
+}
+
+/* Shape morph do M3 Expressive: o pill "achata" ao ser pressionado */
+.button:active {
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.filled:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-primary),
+    var(--md-sys-color-on-primary) 8%
+  );
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.tonal {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.tonal:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--md-sys-color-secondary-container),
+    var(--md-sys-color-on-secondary-container) 8%
+  );
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.outlined {
+  border: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-primary);
+}
+
+.outlined:hover {
+  background-color: color-mix(in srgb, transparent, var(--md-sys-color-primary) 8%);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

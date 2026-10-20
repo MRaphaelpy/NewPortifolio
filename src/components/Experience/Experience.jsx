@@ -1,71 +1,54 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { TbBrandReact, TbBrandNodejs, TbBrandFlutter, TbBrandPython, TbBrandKotlin, TbBrandPhp, TbBrandMongodb } from "react-icons/tb";
-import { LiaJava } from "react-icons/lia";
-import styles from "./Experience.module.css";
+import { experience } from "../../data/experience";
+import { skills } from "../../data/skills";
+import { STAGGER_DELAY } from "../../styles/motion";
 import { getImageUrl } from "../../utils";
+import { Reveal } from "../ui/Reveal/Reveal";
+import { Section } from "../ui/Section/Section";
+import styles from "./Experience.module.css";
 
-const iconMap = {
-  "React": <TbBrandReact size={30} strokeWidth={1.5} />,
-  "Node": <TbBrandNodejs size={30} strokeWidth={1.5} />,
-  "Flutter/Dart": <TbBrandFlutter size={30} strokeWidth={1.5} />,
-  "Java": <LiaJava size={30} />,
-  "Python": <TbBrandPython size={30} strokeWidth={1.5} />,
-  "Kotlin": <TbBrandKotlin size={30} strokeWidth={1.5} />,
-  "PHP": <TbBrandPhp size={30} strokeWidth={1.5} />,
-  "MongoDB": <TbBrandMongodb size={30} strokeWidth={1.5} />
-};
+const formatMonth = (yearMonth, language) =>
+  new Intl.DateTimeFormat(language, { month: "short", year: "numeric" }).format(
+    new Date(`${yearMonth}-01T00:00:00`),
+  );
 
 export const Experience = () => {
-  const { t } = useTranslation();
-
-  const skills = t("experience.skills", { returnObjects: true }) || [];
-  const history = t("experience.history", { returnObjects: true }) || [];
+  const { t, i18n } = useTranslation();
+  const language = i18n.resolvedLanguage === "pt" ? "pt-BR" : "en";
 
   return (
-    <section className={styles.container} id="experience">
-      <h2 className={styles.title}>{t("experience.title")}</h2>
-      <div className={styles.content}>
-        
-        <div className={styles.skills}>
-          {skills.map((skill, id) => (
-            <div key={id} className={styles.skill}>
-              <div className={styles.skillImageContainer}>
-                {iconMap[skill.title] || <img src={getImageUrl(skill.imageSrc)} alt={skill.title} />}
-              </div>
-              <p>{skill.title}</p>
-            </div>
-          ))}
-        </div>
+    <Section id="experience" title={t("experience.title")}>
+      <ul className={styles.skills}>
+        {skills.map(({ name, Icon }, index) => (
+          <Reveal as="li" key={name} className={styles.skill} delay={index * (STAGGER_DELAY / 2)}>
+            <Icon className={styles.skillIcon} aria-hidden="true" />
+            <span>{name}</span>
+          </Reveal>
+        ))}
+      </ul>
 
-        <ul className={styles.history}>
-          {history.map((historyItem, id) => (
-            <li key={id} className={styles.historyItem}>
-              <div className={styles.historyItemHeader}>
-                <img
-                  src={getImageUrl(historyItem.imageSrc)}
-                  alt={`${historyItem.organisation} Logo`}
-                />
-                <div className={styles.historyItemTitle}>
-                  <h3>{historyItem.role}</h3>
-                  <h4>{historyItem.organisation}</h4>
-                  <p className={styles.dates}>{historyItem.startDate} - {historyItem.endDate}</p>
-                </div>
+      <ul className={styles.history}>
+        {experience.map(({ id, organisation, logo, start, end }, index) => (
+          <Reveal as="li" key={id} className={styles.historyItem} delay={index * STAGGER_DELAY}>
+            <div className={styles.historyItemHeader}>
+              <img src={getImageUrl(logo)} alt="" width="56" height="56" loading="lazy" />
+              <div className={styles.historyItemTitle}>
+                <h3>{t(`experience.items.${id}.role`)}</h3>
+                <p className={styles.organisation}>{organisation}</p>
+                <p className={styles.dates}>
+                  {formatMonth(start, language)} –{" "}
+                  {end ? formatMonth(end, language) : t("experience.present")}
+                </p>
               </div>
-              <div className={styles.historyItemDivider} />
-              <ul className={styles.historyItemBullets}>
-                {historyItem.experiences.map((experience, id) => (
-                  <li key={id}>
-                    <span className={styles.bulletIcon}></span>
-                    {experience}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+            </div>
+            <ul className={styles.highlights}>
+              {t(`experience.items.${id}.highlights`, { returnObjects: true }).map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          </Reveal>
+        ))}
+      </ul>
+    </Section>
   );
 };
-

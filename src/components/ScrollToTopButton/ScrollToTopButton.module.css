@@ -1,32 +1,27 @@
-.scrollToTop {
+.fab {
   position: fixed;
-  bottom: 24px;
   right: 24px;
+  bottom: 24px;
   z-index: 1000;
-}
-.scrollToTopButton {
-  background-color: var(--md-sys-color-primary-container);
-  border: none;
-  color: var(--md-sys-color-on-primary-container);
+  display: grid;
+  place-items: center;
   width: 56px;
   height: 56px;
-  border-radius: 16px;
-  cursor: pointer;
-  font-size: 24px;
+  border-radius: var(--md-sys-shape-corner-large);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-size: 1.5rem;
   box-shadow: var(--md-sys-elevation-3);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition:
+    border-radius var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-spatial),
+    box-shadow var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-effects);
 }
-.scrollToTopButton::before {
-  display: none;
-}
-.scrollToTopButton:hover {
-  background-color: var(--md-sys-color-secondary-container);
+
+.fab:hover {
+  border-radius: var(--md-sys-shape-corner-extra-large);
   box-shadow: var(--md-sys-elevation-4);
-  transform: none;
 }
-.scrollToTopButton:active {
-  transform: scale(0.95);
+
+.fab:active {
+  border-radius: var(--md-sys-shape-corner-small);
 }

@@ -1,110 +1,44 @@
-import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { TbLayout, TbServer, TbColorSwatch } from "react-icons/tb";
-import styles from "./About.module.css";
+import { aboutItems } from "../../data/about";
+import { STAGGER_DELAY } from "../../styles/motion";
 import { getImageUrl } from "../../utils";
+import { ExpressiveShape } from "../ui/ExpressiveShape/ExpressiveShape";
+import { Reveal } from "../ui/Reveal/Reveal";
+import { Section } from "../ui/Section/Section";
+import styles from "./About.module.css";
 
 export const About = () => {
   const { t } = useTranslation();
-  const sectionRef = useRef(null);
-  const itemsRef = useRef([]);
-
-  useEffect(() => {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          sectionRef.current.classList.add(styles.visible);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const itemObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add(styles.itemVisible);
-            }, index * 100);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      sectionObserver.observe(sectionRef.current);
-    }
-
-    itemsRef.current.forEach((item) => {
-      if (item) {
-        itemObserver.observe(item);
-      }
-    });
-
-    return () => {
-      if (sectionRef.current) sectionObserver.unobserve(sectionRef.current);
-      itemsRef.current.forEach((item) => {
-        if (item) itemObserver.unobserve(item);
-      });
-    };
-  }, []);
-
-  itemsRef.current = [];
-
-  const addToRefs = (el) => {
-    if (el && !itemsRef.current.includes(el)) {
-      itemsRef.current.push(el);
-    }
-  };
 
   return (
-    <section className={styles.container} id="about" ref={sectionRef}>
-      <div className={styles.headingWrapper} ref={addToRefs}>
-        <h2 className={styles.title}>{t("about.title")}</h2>
-      </div>
-
+    <Section id="about" title={t("about.title")}>
       <div className={styles.content}>
-        <div className={styles.imageContainer} ref={addToRefs}>
+        <Reveal className={styles.imageContainer}>
           <img
-            src={getImageUrl("about/aboutImage.png")}
-            alt="Me sitting with a laptop"
+            src={getImageUrl("about/aboutImage.webp")}
+            alt={t("about.imageAlt")}
             className={styles.aboutImage}
+            width="500"
+            height="500"
+            loading="lazy"
           />
-        </div>
+        </Reveal>
 
         <ul className={styles.aboutItems}>
-          <li className={styles.aboutItem} ref={addToRefs}>
-            <div className={styles.iconContainer}>
-              <TbLayout size={28} strokeWidth={1.5} className={styles.iconSvg} />
-            </div>
-            <div className={styles.aboutItemText}>
-              <h3>{t("about.frontendTitle")}</h3>
-              <p>{t("about.frontendDescription")}</p>
-            </div>
-          </li>
-
-          <li className={styles.aboutItem} ref={addToRefs}>
-            <div className={styles.iconContainer}>
-              <TbServer size={28} strokeWidth={1.5} className={styles.iconSvg} />
-            </div>
-            <div className={styles.aboutItemText}>
-              <h3>{t("about.backendTitle")}</h3>
-              <p>{t("about.backendDescription")}</p>
-            </div>
-          </li>
-
-          <li className={styles.aboutItem} ref={addToRefs}>
-            <div className={styles.iconContainer}>
-              <TbColorSwatch size={28} strokeWidth={1.5} className={styles.iconSvg} />
-            </div>
-            <div className={styles.aboutItemText}>
-              <h3>{t("about.uiTitle")}</h3>
-              <p>{t("about.uiDescription")}</p>
-            </div>
-          </li>
+          {aboutItems.map(({ id, Icon }, index) => (
+            <Reveal as="li" key={id} className={styles.aboutItem} delay={index * STAGGER_DELAY}>
+              <div className={styles.iconContainer}>
+                <ExpressiveShape variant="cookie6" className={styles.iconShape} />
+                <Icon className={styles.icon} aria-hidden="true" />
+              </div>
+              <div className={styles.aboutItemText}>
+                <h3>{t(`about.items.${id}.title`)}</h3>
+                <p>{t(`about.items.${id}.description`)}</p>
+              </div>
+            </Reveal>
+          ))}
         </ul>
       </div>
-    </section>
+    </Section>
   );
 };
