@@ -1,21 +1,31 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import HttpApi from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
+import en from "./locales/en.json";
+import pt from "./locales/pt.json";
 
+// As traduções vão no bundle: são pequenas e evitam uma requisição
+// extra (e o Suspense) antes do primeiro render.
 i18n
-  .use(HttpApi)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    supportedLngs: ['en', 'pt'],
-    fallbackLng: 'pt',
-    backend: {
-      loadPath: '/locales/{{lng}}/translation.json',
+    resources: {
+      pt: { translation: pt },
+      en: { translation: en },
     },
-    react: {
-      useSuspense: true,
-    },
+    supportedLngs: ["pt", "en"],
+    nonExplicitSupportedLngs: true,
+    load: "languageOnly",
+    fallbackLng: "pt",
+    interpolation: { escapeValue: false },
   });
+
+const syncDocumentLanguage = (language) => {
+  document.documentElement.lang = language.startsWith("pt") ? "pt-BR" : "en";
+};
+
+syncDocumentLanguage(i18n.resolvedLanguage ?? "pt");
+i18n.on("languageChanged", syncDocumentLanguage);
 
 export default i18n;

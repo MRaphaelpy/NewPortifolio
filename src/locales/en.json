@@ -1,0 +1,147 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme",
+    "switchLanguage": "Change language to Portuguese",
+    "scrollToTop": "Back to top",
+    "newTab": "opens in a new tab",
+    "openCommandPalette": "Open command palette",
+    "copyEmail": "Copy email"
+  },
+  "navbar": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "blog": "Blog",
+    "github": "GitHub"
+  },
+  "hero": {
+    "badge": "Software Developer",
+    "greeting": "Hi, I'm",
+    "description": "Computer Scientist, with expertise in building complete and efficient solutions. Reach out if you'd like to learn more!",
+    "contactBtn": "Contact Me",
+    "resumeBtn": "Download CV",
+    "imageAlt": "Illustrated avatar of Rafael"
+  },
+  "about": {
+    "title": "About",
+    "imageAlt": "Illustration of a developer working on a laptop",
+    "items": {
+      "frontend": {
+        "title": "Frontend Developer",
+        "description": "I'm a frontend developer with experience in building responsive and optimized sites"
+      },
+      "backend": {
+        "title": "Backend Developer",
+        "description": "I have experience developing fast and optimised back-end systems and APIs"
+      },
+      "ui": {
+        "title": "UI Designer",
+        "description": "I have designed multiple landing pages and have created design systems as well"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "present": "Present",
+    "items": {
+      "ciandt": {
+        "role": "Software Developer",
+        "highlights": ["Frontend Developer", "Backend Developer"]
+      },
+      "univasf": {
+        "role": "Data Miner",
+        "highlights": ["Data mining with Weka", "Data mining with Java"]
+      },
+      "cns": {
+        "role": "Data Miner",
+        "highlights": ["Data mining with Weka", "Data processing", "Data analysis"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "viewMore": "See more on GitHub",
+    "demo": "Live demo",
+    "source": "Source code",
+    "imageAlt": "Screenshot of the {{title}} project",
+    "items": {
+      "academicHub": "AcademicHUB is an application developed by the 2023.2 Web Programming class at UNIVASF.",
+      "finTrack": "FinTrack is an application developed by the 2024.1 Mobile Programming class at UNIVASF.",
+      "fTrack": "FTrack is a Flutter tracking application that uses the API available at chipytux/correiosApi.",
+      "civitas": "Civic participation platform for reporting urban issues, with a REST API and WhatsApp and Telegram integrations."
+    },
+    "filterLabel": "Filter projects by technology",
+    "filterAll": "All"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Feel free to reach out if you'd like to know more about me or what I do",
+    "links": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "emailCopied": "Email copied!",
+    "localTime": "{{time}} local time"
+  },
+  "footer": {
+    "copyright": "{{name}} © {{year}}",
+    "builtWith": "Built with React and i18next"
+  },
+  "alerts": {
+    "underConstruction": "Under construction"
+  },
+  "easterEgg": {
+    "intro": "Try clicking the \"Close\" button...",
+    "close": "Close",
+    "giveUp": "Give up",
+    "attempts": "Attempts",
+    "sequence": "Sequence",
+    "konamiActivated": "🎮 KONAMI CODE ACTIVATED! You can click the button now!",
+    "predictMode": "🔮 Prediction Mode On",
+    "snakeMode": "🐍 Snake Mode On",
+    "crashTitle": "⚠️ ERROR: Task_ClickButton.exe has stopped working",
+    "crashBody": "Diagnosing the problem... Please wait."
+  },
+  "commandPalette": {
+    "placeholder": "Type a command or search…",
+    "empty": "No results for “{{query}}”",
+    "groups": {
+      "navigate": "Navigate",
+      "actions": "Actions",
+      "links": "Links"
+    },
+    "goTo": "Go to {{section}}",
+    "toggleTheme": "Toggle light/dark theme",
+    "switchLanguage": "Mudar para português",
+    "copyEmail": "Copy email",
+    "openGithub": "Open GitHub",
+    "openLinkedin": "Open LinkedIn",
+    "openResume": "Open résumé",
+    "hintNavigate": "navigate",
+    "hintSelect": "select",
+    "hintClose": "close"
+  },
+  "github": {
+    "title": "On GitHub",
+    "description": "Live data from the public GitHub API.",
+    "stats": {
+      "repos": "Public repositories",
+      "followers": "Followers",
+      "years": "Years on GitHub",
+      "topLanguage": "Top language"
+    },
+    "languages": "Most used languages",
+    "recent": "Recently updated",
+    "updated": "updated {{time}}",
+    "noDescription": "No description",
+    "stars": "{{count}} stars",
+    "error": "Couldn't load GitHub data right now.",
+    "viewProfile": "View full profile"
+  }
+}

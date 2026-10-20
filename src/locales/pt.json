@@ -1,0 +1,147 @@
+{
+  "a11y": {
+    "skipToContent": "Pular para o conteúdo",
+    "openMenu": "Abrir menu de navegação",
+    "closeMenu": "Fechar menu de navegação",
+    "switchToLight": "Mudar para o tema claro",
+    "switchToDark": "Mudar para o tema escuro",
+    "switchLanguage": "Mudar idioma para inglês",
+    "scrollToTop": "Voltar ao topo",
+    "newTab": "abre em nova aba",
+    "openCommandPalette": "Abrir paleta de comandos",
+    "copyEmail": "Copiar e-mail"
+  },
+  "navbar": {
+    "about": "Sobre",
+    "experience": "Experiência",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "blog": "Blog",
+    "github": "GitHub"
+  },
+  "hero": {
+    "badge": "Desenvolvedor de Software",
+    "greeting": "Oi, eu sou",
+    "description": "Cientista da Computação, com expertise em criar soluções completas e eficientes. Entre em contato se quiser saber mais!",
+    "contactBtn": "Entre em Contato",
+    "resumeBtn": "Baixar Currículo",
+    "imageAlt": "Avatar ilustrado do Rafael"
+  },
+  "about": {
+    "title": "Sobre",
+    "imageAlt": "Ilustração de um desenvolvedor trabalhando no notebook",
+    "items": {
+      "frontend": {
+        "title": "Desenvolvedor Frontend",
+        "description": "Sou um desenvolvedor frontend com experiência em construir sites responsivos e otimizados"
+      },
+      "backend": {
+        "title": "Desenvolvedor Backend",
+        "description": "Tenho experiência em desenvolver sistemas de back-end rápidos e otimizados e APIs"
+      },
+      "ui": {
+        "title": "Designer de UI",
+        "description": "Desenhei várias páginas de destino e criei sistemas de design também"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiência",
+    "present": "Presente",
+    "items": {
+      "ciandt": {
+        "role": "Desenvolvedor de Software",
+        "highlights": ["Desenvolvedor front-end", "Desenvolvedor back-end"]
+      },
+      "univasf": {
+        "role": "Minerador de Dados",
+        "highlights": ["Mineração de dados com Weka", "Mineração de dados com Java"]
+      },
+      "cns": {
+        "role": "Minerador de Dados",
+        "highlights": ["Mineração de dados com Weka", "Tratamento de dados", "Análise de dados"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Projetos",
+    "viewMore": "Ver mais no GitHub",
+    "demo": "Ver demo",
+    "source": "Código-fonte",
+    "imageAlt": "Captura de tela do projeto {{title}}",
+    "items": {
+      "academicHub": "O AcademicHUB é uma aplicação desenvolvida pela turma 2023.2 de Programação WEB da UNIVASF.",
+      "finTrack": "O FinTrack é um aplicativo desenvolvido pela turma 2024.1 de Programação Mobile da UNIVASF.",
+      "fTrack": "FTrack é um aplicativo Flutter de rastreio que utiliza a API disponível em chipytux/correiosApi.",
+      "civitas": "Plataforma de participação cidadã para registro de ocorrências urbanas com API REST, integração WhatsApp e integração Telegram."
+    },
+    "filterLabel": "Filtrar projetos por tecnologia",
+    "filterAll": "Todos"
+  },
+  "contact": {
+    "title": "Contatos",
+    "description": "Entre em contato comigo se quiser saber mais sobre mim ou sobre o que eu faço",
+    "links": {
+      "email": "E-mail",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "emailCopied": "E-mail copiado!",
+    "localTime": "{{time}} no horário local"
+  },
+  "footer": {
+    "copyright": "{{name}} © {{year}}",
+    "builtWith": "Desenvolvido com React e i18next"
+  },
+  "alerts": {
+    "underConstruction": "Em construção"
+  },
+  "easterEgg": {
+    "intro": "Tente clicar no botão \"Fechar\"...",
+    "close": "Fechar",
+    "giveUp": "Desistir",
+    "attempts": "Tentativas",
+    "sequence": "Sequência",
+    "konamiActivated": "🎮 KONAMI CODE ATIVADO! Você pode clicar no botão agora!",
+    "predictMode": "🔮 Modo Previsão Ativado",
+    "snakeMode": "🐍 Modo Cobra Ativado",
+    "crashTitle": "⚠️ ERRO: Task_ClickButton.exe parou de funcionar",
+    "crashBody": "Diagnosticando o problema... Por favor, aguarde."
+  },
+  "commandPalette": {
+    "placeholder": "Digite um comando ou procure…",
+    "empty": "Nenhum resultado para “{{query}}”",
+    "groups": {
+      "navigate": "Navegar",
+      "actions": "Ações",
+      "links": "Links"
+    },
+    "goTo": "Ir para {{section}}",
+    "toggleTheme": "Alternar tema claro/escuro",
+    "switchLanguage": "Switch to English",
+    "copyEmail": "Copiar e-mail",
+    "openGithub": "Abrir GitHub",
+    "openLinkedin": "Abrir LinkedIn",
+    "openResume": "Abrir currículo",
+    "hintNavigate": "navegar",
+    "hintSelect": "selecionar",
+    "hintClose": "fechar"
+  },
+  "github": {
+    "title": "No GitHub",
+    "description": "Dados ao vivo da API pública do GitHub.",
+    "stats": {
+      "repos": "Repositórios públicos",
+      "followers": "Seguidores",
+      "years": "Anos no GitHub",
+      "topLanguage": "Linguagem principal"
+    },
+    "languages": "Linguagens mais usadas",
+    "recent": "Atualizados recentemente",
+    "updated": "atualizado {{time}}",
+    "noDescription": "Sem descrição",
+    "stars": "{{count}} estrelas",
+    "error": "Não foi possível carregar os dados do GitHub agora.",
+    "viewProfile": "Ver perfil completo"
+  }
+}

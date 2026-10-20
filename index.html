@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marcos Rafael</title>
+    <title>Marcos Rafael — Desenvolvedor de Software</title>
+    <meta
+      name="description"
+      content="Portfólio de Marcos Rafael, Cientista da Computação e Desenvolvedor de Software: projetos, experiência e contato."
+    />
+    <meta name="author" content="Marcos Rafael" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="canonical" href="https://mraphaelpy.github.io/" />
+    <meta name="theme-color" content="#0e1513" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4fbf8" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mraphaelpy.github.io/" />
+    <meta property="og:title" content="Marcos Rafael — Desenvolvedor de Software" />
+    <meta
+      property="og:description"
+      content="Projetos, experiência e contato de Marcos Rafael, Cientista da Computação."
+    />
+    <meta property="og:image" content="https://mraphaelpy.github.io/assets/hero/heroImage.webp" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+
+    <script>
+      // Aplica o tema antes do primeiro paint para não piscar o tema errado.
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem("portfolio-theme");
+        } catch (e) {}
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

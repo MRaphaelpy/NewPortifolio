@@ -1,0 +1,132 @@
+/*
+ * Design tokens (Material 3 Expressive).
+ * Paleta gerada a partir da cor-semente #00897B com SchemeTonalSpot
+ * (@material/material-color-utilities). Para trocar a cor, gere de novo
+ * os dois blocos de cor abaixo a partir da nova semente.
+ *
+ * Breakpoints (window size classes do M3) — use sempre estes valores:
+ *   compact:  max-width: 599px
+ *   medium:   max-width: 839px
+ *   expanded: max-width: 1199px
+ */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --md-sys-color-primary: #82d5c7;
+  --md-sys-color-on-primary: #003731;
+  --md-sys-color-primary-container: #005048;
+  --md-sys-color-on-primary-container: #9ef2e3;
+  --md-sys-color-secondary: #b1ccc6;
+  --md-sys-color-on-secondary: #1c3531;
+  --md-sys-color-secondary-container: #334b47;
+  --md-sys-color-on-secondary-container: #cce8e2;
+  --md-sys-color-tertiary: #adcae5;
+  --md-sys-color-on-tertiary: #143349;
+  --md-sys-color-tertiary-container: #2d4a60;
+  --md-sys-color-on-tertiary-container: #cbe6ff;
+  --md-sys-color-surface: #0e1513;
+  --md-sys-color-on-surface: #dde4e1;
+  --md-sys-color-on-surface-variant: #bec9c5;
+  --md-sys-color-surface-container-lowest: #090f0e;
+  --md-sys-color-surface-container-low: #161d1b;
+  --md-sys-color-surface-container: #1a211f;
+  --md-sys-color-surface-container-high: #252b2a;
+  --md-sys-color-surface-container-highest: #303634;
+  --md-sys-color-outline: #899390;
+  --md-sys-color-outline-variant: #3f4946;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-inverse-surface: #dde4e1;
+  --md-sys-color-inverse-on-surface: #2b3230;
+  --md-sys-color-scrim: rgb(0 0 0 / 0.6);
+
+  --md-sys-elevation-1: 0 1px 3px 1px rgb(0 0 0 / 0.15), 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --md-sys-elevation-2: 0 2px 6px 2px rgb(0 0 0 / 0.15), 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --md-sys-elevation-3: 0 4px 8px 3px rgb(0 0 0 / 0.15), 0 1px 3px 0 rgb(0 0 0 / 0.3);
+  --md-sys-elevation-4: 0 6px 10px 4px rgb(0 0 0 / 0.15), 0 2px 3px 0 rgb(0 0 0 / 0.3);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --md-sys-color-primary: #006b5f;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #9ef2e3;
+  --md-sys-color-on-primary-container: #005048;
+  --md-sys-color-secondary: #4a635e;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #cce8e2;
+  --md-sys-color-on-secondary-container: #334b47;
+  --md-sys-color-tertiary: #456179;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #cbe6ff;
+  --md-sys-color-on-tertiary-container: #2d4a60;
+  --md-sys-color-surface: #f4fbf8;
+  --md-sys-color-on-surface: #161d1b;
+  --md-sys-color-on-surface-variant: #3f4946;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #eff5f2;
+  --md-sys-color-surface-container: #e9efec;
+  --md-sys-color-surface-container-high: #e3eae7;
+  --md-sys-color-surface-container-highest: #dde4e1;
+  --md-sys-color-outline: #6f7976;
+  --md-sys-color-outline-variant: #bec9c5;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-inverse-surface: #2b3230;
+  --md-sys-color-inverse-on-surface: #ecf2ef;
+  --md-sys-color-scrim: rgb(0 0 0 / 0.4);
+
+  --md-sys-elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.12), 0 1px 3px 1px rgb(0 0 0 / 0.08);
+  --md-sys-elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.12), 0 2px 6px 2px rgb(0 0 0 / 0.08);
+  --md-sys-elevation-3: 0 1px 3px 0 rgb(0 0 0 / 0.12), 0 4px 8px 3px rgb(0 0 0 / 0.08);
+  --md-sys-elevation-4: 0 2px 3px 0 rgb(0 0 0 / 0.12), 0 6px 10px 4px rgb(0 0 0 / 0.08);
+}
+
+:root {
+  /* Tipografia — Roboto Flex variável permite pesos "emphasized" intermediários */
+  --md-sys-typescale-font: "Roboto Flex Variable", "Roboto", system-ui, sans-serif;
+  --md-sys-typescale-display-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  --md-sys-typescale-display-weight: 760;
+  --md-sys-typescale-display-tracking: -0.03em;
+  --md-sys-typescale-headline-size: clamp(1.875rem, 1.5rem + 1.4vw, 2.75rem);
+  --md-sys-typescale-headline-weight: 680;
+  --md-sys-typescale-headline-tracking: -0.02em;
+  --md-sys-typescale-title-size: 1.25rem;
+  --md-sys-typescale-title-weight: 600;
+  --md-sys-typescale-body-large-size: 1.125rem;
+  --md-sys-typescale-body-size: 1rem;
+  --md-sys-typescale-body-small-size: 0.875rem;
+  --md-sys-typescale-body-weight: 400;
+  --md-sys-typescale-label-size: 0.875rem;
+  --md-sys-typescale-label-small-size: 0.75rem;
+  --md-sys-typescale-label-weight: 560;
+
+  /* Forma */
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-large-increased: 20px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-extra-large-increased: 32px;
+  --md-sys-shape-corner-extra-extra-large: 48px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /*
+   * Movimento — aproximações em CSS dos springs do M3 Expressive.
+   * "spatial" (posição, tamanho, forma) tem leve overshoot;
+   * "effects" (cor, opacidade) não tem. Os springs reais (framer-motion)
+   * ficam em src/styles/motion.js.
+   */
+  --md-sys-motion-easing-spatial: cubic-bezier(0.34, 1.3, 0.64, 1);
+  --md-sys-motion-easing-effects: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-duration-short: 150ms;
+  --md-sys-motion-duration-medium: 300ms;
+  --md-sys-motion-duration-long: 500ms;
+
+  /* Layout */
+  --layout-max-width: 1200px;
+  --layout-gutter: clamp(16px, 5vw, 64px);
+  --layout-section-gap: clamp(72px, 10vw, 128px);
+  --layout-navbar-height: 72px;
+}
