@@ -1,84 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import styles from "./App.module.css";
+import { lazy, Suspense, useState } from "react";
+import { Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { About } from "./components/About/About";
+import { CommandPalette } from "./components/CommandPalette/CommandPalette";
 import { Contact } from "./components/Contact/Contact";
 import { Experience } from "./components/Experience/Experience";
+import { Footer } from "./components/Footer/Footer";
+import { GitHubActivity } from "./components/GitHubActivity/GitHubActivity";
 import { Hero } from "./components/Hero/Hero";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Projects } from "./components/Projects/Projects";
-import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton";
-import { Footer } from "./components/Footer/Footer";
-import FadeInSection from "./components/FadeInSection/FadeInSection";
-import EasterEggAlert from "./components/EasterEggAlert/EasterEggAlert";
-import { useTheme } from "./context/ThemeContext";
-import { darkTheme, lightTheme } from "./theme";
-import toast, { Toaster } from 'react-hot-toast';
+import { ScrollToTopButton } from "./components/ScrollToTopButton/ScrollToTopButton";
+import { useHotkey } from "./hooks/useHotkey";
+import { useKonamiCode } from "./hooks/useKonamiCode";
 
-function App() {
-  const [showAlert, setShowAlert] = useState(false);
-  const { theme } = useTheme();
+// O easter egg só é baixado quando o Konami code é digitado.
+const EasterEggAlert = lazy(() =>
+  import("./components/EasterEggAlert/EasterEggAlert").then((module) => ({
+    default: module.EasterEggAlert,
+  })),
+);
 
-  <Toaster
-  position="bottom-center"
-  reverseOrder={false}
-/>
-  useEffect(() => {
-    const konamiCode = [
-      'ArrowUp', 'ArrowUp',
-      'ArrowDown', 'ArrowDown',
-      'ArrowLeft', 'ArrowRight',
-      'ArrowLeft', 'ArrowRight',
-      'b', 'a'
-    ];
-    let inputSequence = [];
+// Estilo de snackbar do M3 para os toasts.
+const toastOptions = {
+  style: {
+    background: "var(--md-sys-color-inverse-surface)",
+    color: "var(--md-sys-color-inverse-on-surface)",
+    borderRadius: "var(--md-sys-shape-corner-medium)",
+    fontFamily: "inherit",
+  },
+};
 
-    const keyHandler = (e) => {
-      inputSequence.push(e.key);
-      if (
-        !konamiCode.slice(0, inputSequence.length).every(
-          (code, index) => code === inputSequence[index]
-        )
-      ) {
-        inputSequence = [];
-      }
-      if (inputSequence.length === konamiCode.length) {
-        setShowAlert(true);
-        inputSequence = [];
-      }
-    };
+export const App = () => {
+  const { t } = useTranslation();
+  const [showEasterEgg, setShowEasterEgg] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
-    window.addEventListener('keydown', keyHandler);
-    return () => window.removeEventListener('keydown', keyHandler);
-  }, []);
-
-  const closeAlert = () => setShowAlert(false);
-
-  const muiTheme = theme === 'dark' ? darkTheme : lightTheme;
+  useKonamiCode(() => setShowEasterEgg(true));
+  useHotkey("k", () => setCommandPaletteOpen((open) => !open));
 
   return (
-    <MuiThemeProvider theme={muiTheme}>
-      <CssBaseline />
-      <div className={styles.App}>
-        {showAlert && <EasterEggAlert onClose={closeAlert} />}
-        <Navbar />
+    <>
+      <a className="skip-link" href="#main">
+        {t("a11y.skipToContent")}
+      </a>
+      <Navbar onOpenCommandPalette={() => setCommandPaletteOpen(true)} />
+      <main id="main">
         <Hero />
         <About />
-        <FadeInSection>
-          <Experience />
-        </FadeInSection>
-        <FadeInSection>
-          <Projects />
-        </FadeInSection>
-        <FadeInSection>
-          <Contact />
-        </FadeInSection>
-        <ScrollToTopButton />
-        <Footer />
-      </div>
-    </MuiThemeProvider>
+        <Experience />
+        <Projects />
+        <GitHubActivity />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollToTopButton />
+      <CommandPalette open={commandPaletteOpen} onClose={() => setCommandPaletteOpen(false)} />
+      <Toaster position="bottom-center" toastOptions={toastOptions} />
+      {showEasterEgg && (
+        <Suspense fallback={null}>
+          <EasterEggAlert onClose={() => setShowEasterEgg(false)} />
+        </Suspense>
+      )}
+    </>
   );
-}
-
-export default App;
+};

@@ -1,90 +1,60 @@
-@import "../../vars.css";
-.container {
-  color: var(--md-sys-color-on-surface);
-  margin-top: 80px;
-  padding: 0 5%;
-  text-align: center;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.headerContainer {
-  margin-bottom: 48px;
-}
-.title {
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: -0.5px;
-  color: var(--md-sys-color-on-surface);
-  margin-bottom: 12px;
-}
-.titleBar {
-  width: 48px;
-  height: 3px;
-  background-color: var(--md-sys-color-primary);
-  margin: 0 auto;
-  border-radius: 2px;
-}
 .projects {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
 }
+
+.projects > li {
+  display: flex;
+}
+
 .buttonContainer {
   display: flex;
   justify-content: center;
   margin-top: 40px;
 }
-.viewMoreButton {
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+/* Filter chip do M3: cantos menores, com ícone de check quando selecionado */
+.chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
-  border: none;
-  padding: 12px 32px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.1px;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: none;
-  text-transform: none;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-small);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-label-size);
+  font-weight: var(--md-sys-typescale-label-weight);
+  transition:
+    border-radius var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-spatial),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-effects);
 }
-.viewMoreButton:hover {
+
+.chip:hover {
+  background-color: color-mix(in srgb, transparent, var(--md-sys-color-on-surface) 8%);
+}
+
+.chipSelected {
+  padding-left: 10px;
+  border-color: transparent;
+  border-radius: var(--md-sys-shape-corner-full);
   background-color: var(--md-sys-color-secondary-container);
-  box-shadow: var(--md-sys-elevation-1);
-  transform: none;
+  color: var(--md-sys-color-on-secondary-container);
 }
-.viewMoreButton::before {
-  display: none;
+
+.chipSelected:hover {
+  background-color: var(--md-sys-color-secondary-container);
 }
-.buttonIcon {
-  display: flex;
-  align-items: center;
-}
-@media screen and (max-width: 830px) {
-  .title {
-    font-size: 1.75rem;
-  }
-}
-@media screen and (max-width: 768px) {
-  .projects {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-  .viewMoreButton {
-    padding: 10px 28px;
-  }
-}
-@media screen and (max-width: 500px) {
-  .title {
-    font-size: 1.5rem;
-  }
+
+.chipIcon {
+  width: 18px;
+  height: 18px;
 }

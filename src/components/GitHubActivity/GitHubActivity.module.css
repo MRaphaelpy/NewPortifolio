@@ -1,0 +1,211 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 132px;
+  padding: 24px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container);
+}
+
+/* Bento: o primeiro número ganha destaque de cor. */
+.stat:first-child {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.statValue {
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: var(--md-sys-typescale-display-weight);
+  letter-spacing: var(--md-sys-typescale-display-tracking);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: var(--md-sys-typescale-label-size);
+  font-weight: var(--md-sys-typescale-label-weight);
+  opacity: 0.85;
+}
+
+.languagesCard {
+  padding: 24px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.cardTitle {
+  margin-bottom: 16px;
+  font-size: var(--md-sys-typescale-title-size);
+  font-weight: var(--md-sys-typescale-title-weight);
+}
+
+.languageBar {
+  display: flex;
+  gap: 4px;
+  height: 12px;
+}
+
+.languageBar span {
+  min-width: 12px;
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+.languageLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 16px;
+  font-size: var(--md-sys-typescale-body-small-size);
+}
+
+.languageLegend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.languageDot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+.languageShare {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 12px;
+}
+
+.repos > li {
+  display: flex;
+}
+
+.repo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  min-height: 136px;
+  padding: 20px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+  transition:
+    border-radius var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-spatial),
+    background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-effects);
+}
+
+a.repo:hover {
+  border-radius: var(--md-sys-shape-corner-large);
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.repoName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  font-weight: var(--md-sys-typescale-title-weight);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repoName svg {
+  flex-shrink: 0;
+  color: var(--md-sys-color-primary);
+}
+
+.repoDescription {
+  flex: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-small-size);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.repoMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-label-small-size);
+  font-weight: var(--md-sys-typescale-label-weight);
+}
+
+.repoMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.skeleton {
+  min-height: 132px;
+  background: linear-gradient(
+    100deg,
+    var(--md-sys-color-surface-container) 40%,
+    var(--md-sys-color-surface-container-high) 50%,
+    var(--md-sys-color-surface-container) 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.stat.skeleton:first-child {
+  background: linear-gradient(
+    100deg,
+    var(--md-sys-color-surface-container) 40%,
+    var(--md-sys-color-surface-container-high) 50%,
+    var(--md-sys-color-surface-container) 60%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 839px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

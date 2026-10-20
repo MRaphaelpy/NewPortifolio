@@ -1,89 +1,76 @@
-import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import styles from "./Projects.module.css";
+import { TbArrowRight, TbCheck } from "react-icons/tb";
+import { site } from "../../config/site";
+import { projects } from "../../data/projects";
+import { motionTokens } from "../../styles/motion";
+import { cx } from "../../utils";
+import { Button } from "../ui/Button/Button";
+import { Reveal } from "../ui/Reveal/Reveal";
+import { Section } from "../ui/Section/Section";
 import { ProjectCard } from "./ProjectCard";
+import styles from "./Projects.module.css";
+
+// Tecnologias na ordem em que aparecem, sem repetir.
+const allSkills = [...new Set(projects.flatMap((project) => project.skills))];
 
 export const Projects = () => {
   const { t } = useTranslation();
-  const projects = t('projects', { returnObjects: true }) || [];
+  const [selectedSkill, setSelectedSkill] = useState(null);
 
-  const viewMore = () => {
-    window.open("https://github.com/mraphaelpy?tab=repositories", "_blank", "noopener,noreferrer");
-  };
+  const visibleProjects = selectedSkill
+    ? projects.filter((project) => project.skills.includes(selectedSkill))
+    : projects;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 100, 
-        damping: 12 
-      }
-    }
-  };
+  const filters = [{ value: null, label: t("projects.filterAll") }].concat(
+    allSkills.map((skill) => ({ value: skill, label: skill })),
+  );
 
   return (
-    <section className={styles.container} id="projects">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className={styles.headerContainer}
-      >
-        <h2 className={styles.title}>{t('project.title')}</h2>
-        <div className={styles.titleBar}></div>
-       
-      </motion.div>
-      
-      <motion.div 
-        className={styles.projects}
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {projects.map((project, id) => (
-          <motion.div key={id} variants={itemVariants}>
-            <ProjectCard project={project} />
-          </motion.div>
-        ))}
-      </motion.div>
-      
-      <motion.div 
-        className={styles.buttonContainer}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-      >
-        <button 
-          className={styles.viewMoreButton} 
-          onClick={viewMore}
-          aria-label={t('project.viewMoreAriaLabel')}
-        >
-          <span>{t('project.viewMore')}</span>
-          <div className={styles.buttonIcon}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        </button>
-      </motion.div>
-    </section>
+    <Section id="projects" title={t("projects.title")}>
+      <Reveal>
+        <div className={styles.filters} role="group" aria-label={t("projects.filterLabel")}>
+          {filters.map(({ value, label }) => {
+            const selected = selectedSkill === value;
+            return (
+              <button
+                key={label}
+                type="button"
+                className={cx(styles.chip, selected && styles.chipSelected)}
+                aria-pressed={selected}
+                onClick={() => setSelectedSkill(value)}
+              >
+                {selected && <TbCheck className={styles.chipIcon} aria-hidden="true" />}
+                {label}
+              </button>
+            );
+          })}
+        </div>
+
+        <motion.ul className={styles.projects} layout transition={motionTokens.spatialDefault}>
+          <AnimatePresence mode="popLayout" initial={false}>
+            {visibleProjects.map((project) => (
+              <motion.li
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={motionTokens.spatialDefault}
+              >
+                <ProjectCard project={project} />
+              </motion.li>
+            ))}
+          </AnimatePresence>
+        </motion.ul>
+      </Reveal>
+
+      <Reveal className={styles.buttonContainer}>
+        <Button href={site.githubReposUrl} external variant="tonal" icon={TbArrowRight}>
+          {t("projects.viewMore")}
+        </Button>
+      </Reveal>
+    </Section>
   );
 };

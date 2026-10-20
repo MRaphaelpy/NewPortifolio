@@ -1,0 +1,18 @@
+.localTime {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-label-size);
+  font-weight: var(--md-sys-typescale-label-weight);
+}
+
+.localTime svg {
+  width: 18px;
+  height: 18px;
+  color: var(--md-sys-color-primary);
+}

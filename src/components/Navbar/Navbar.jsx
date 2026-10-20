@@ -1,188 +1,150 @@
-import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
-import styles from "./Navbar.module.css";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import TranslateIcon from "@mui/icons-material/Translate";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { TbLanguage, TbMenu2, TbMoon, TbSearch, TbSun, TbX } from "react-icons/tb";
+import { site } from "../../config/site";
 import { useTheme } from "../../context/ThemeContext";
-import toast, { Toaster } from "react-hot-toast";
+import { navigationItems } from "../../data/navigation";
+import { useActiveSection } from "../../hooks/useActiveSection";
+import { useScrolledPast } from "../../hooks/useScrolledPast";
+import { motionTokens } from "../../styles/motion";
+import { cx } from "../../utils";
+import { ScrollProgress } from "../ScrollProgress/ScrollProgress";
+import styles from "./Navbar.module.css";
 
-export const Navbar = () => {
+const sectionIds = navigationItems.map(({ id }) => id);
+const isMac = /Mac|iPhone|iPad/.test(navigator.userAgent);
+
+export const Navbar = ({ onOpenCommandPalette }) => {
   const { t, i18n } = useTranslation();
+  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLanguageFlash, setShowLanguageFlash] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const scrolled = useScrolledPast(20);
+  const activeSection = useActiveSection(sectionIds);
+  const menuRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const isPortuguese = i18n.resolvedLanguage === "pt";
+  const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
     if (!menuOpen) return;
 
-    const handleClickOutside = (e) => {
-      if (
-        !e.target.closest(`.${styles.menu}`) &&
-        !e.target.closest(`.${styles.menuBtn}`)
-      ) {
-        setMenuOpen(false);
-      }
+    const handlePointerDown = (event) => {
+      const clickedInside =
+        menuRef.current?.contains(event.target) || menuButtonRef.current?.contains(event.target);
+      if (!clickedInside) setMenuOpen(false);
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
 
-  const toggleLanguage = () => {
-    const newLanguage = i18n.language === "pt" ? "en" : "pt";
-    i18n.changeLanguage(newLanguage);
-  };
-
   const handleLanguageChange = () => {
-    setTimeout(toggleLanguage, 260);
-
     setShowLanguageFlash(true);
-
-    setTimeout(() => {
-      setShowLanguageFlash(false);
-    }, 800);
+    i18n.changeLanguage(isPortuguese ? "en" : "pt");
   };
 
-  const handleBlogClick = () => {
-    toast("🚧 " + t("alerts.criacao"), {
-      duration: 1500,
-      icon: "ℹ️",
-    });
-
-    setMenuOpen(false);
+  const handleBlogClick = (event) => {
+    event.preventDefault();
+    toast(`🚧 ${t("alerts.underConstruction")}`, { duration: 1500 });
+    closeMenu();
   };
 
   return (
-    <>
-      <Toaster
-        position="bottom-center"
-        reverseOrder={false}
-      />
+    <nav className={cx(styles.navbar, scrolled && styles.scrolled)}>
+      {showLanguageFlash && (
+        <div
+          className={styles.languageOverlay}
+          onAnimationEnd={() => setShowLanguageFlash(false)}
+        />
+      )}
 
-      <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
-        {showLanguageFlash && (
-          <div className={styles.languageOverlay}></div>
-        )}
+      <a className={styles.title} href="#top">
+        {site.name}
+      </a>
 
-        <a className={styles.title} href="/">
-          Marcos Raphael
-        </a>
+      <div className={styles.navigationContainer}>
+        <button
+          ref={menuButtonRef}
+          className={styles.iconButton}
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
+          aria-expanded={menuOpen}
+          aria-controls="main-menu"
+        >
+          {menuOpen ? <TbX aria-hidden="true" /> : <TbMenu2 aria-hidden="true" />}
+        </button>
 
-        <div className={styles.navigationContainer}>
-          <button
-            className={styles.menuBtn}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            {menuOpen ? (
-              <CloseIcon fontSize="medium" />
-            ) : (
-              <MenuIcon fontSize="medium" />
-            )}
-          </button>
-
-          <div
-            className={`${styles.menu} ${menuOpen ? styles.menuOpen : ""
-              }`}
-          >
-            <ul className={styles.menuItems}>
-              <li>
+        <div ref={menuRef} id="main-menu" className={cx(styles.menu, menuOpen && styles.menuOpen)}>
+          <ul className={styles.menuItems}>
+            {navigationItems.map(({ id, labelKey }) => (
+              <li key={id}>
                 <a
-                  href="#about"
-                  onClick={() => setMenuOpen(false)}
+                  href={`#${id}`}
+                  onClick={closeMenu}
+                  className={cx(activeSection === id && styles.activeLink)}
+                  aria-current={activeSection === id ? "location" : undefined}
                 >
-                  {t("navbar.about")}
+                  {activeSection === id && (
+                    <motion.span
+                      layoutId="navbar-active-indicator"
+                      className={styles.activeIndicator}
+                      transition={motionTokens.spatialDefault}
+                    />
+                  )}
+                  {t(labelKey)}
                 </a>
               </li>
-
-              <li>
-                <a
-                  href="#experience"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t("navbar.experience")}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#projects"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t("navbar.projects")}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {t("navbar.contact")}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleBlogClick();
-                  }}
-                >
-                  {t("Blog")}
-                </a>
-              </li>
-            </ul>
-          </div>
+            ))}
+            <li>
+              <a href="#" onClick={handleBlogClick}>
+                {t("navbar.blog")}
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <div className={styles.actionButtons}>
-          <button
-            className={styles.themeBtn}
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"
-              } mode`}
-          >
-            {theme === "dark" ? (
-              <LightModeIcon fontSize="small" />
-            ) : (
-              <DarkModeIcon fontSize="small" />
-            )}
-          </button>
+      <div className={styles.actionButtons}>
+        <button
+          className={styles.searchBtn}
+          onClick={onOpenCommandPalette}
+          aria-label={t("a11y.openCommandPalette")}
+          aria-keyshortcuts={isMac ? "Meta+K" : "Control+K"}
+        >
+          <TbSearch aria-hidden="true" />
+          <kbd className={styles.shortcut}>{isMac ? "⌘K" : "Ctrl K"}</kbd>
+        </button>
 
-          <button
-            className={`${styles.langBtn} ${styles.active}`}
-            onClick={handleLanguageChange}
-            aria-label={`Change language to ${i18n.language === "pt" ? "English" : "Portuguese"
-              }`}
-          >
-            <TranslateIcon
-              fontSize="small"
-              className={styles.langIcon}
-            />
-            <span>{i18n.language === "pt" ? "PT" : "EN"}</span>
-          </button>
-        </div>
-      </nav>
-    </>
+        <button
+          className={styles.iconButton}
+          onClick={toggleTheme}
+          aria-label={theme === "dark" ? t("a11y.switchToLight") : t("a11y.switchToDark")}
+        >
+          {theme === "dark" ? <TbSun aria-hidden="true" /> : <TbMoon aria-hidden="true" />}
+        </button>
+
+        <button
+          className={styles.langBtn}
+          onClick={handleLanguageChange}
+          aria-label={t("a11y.switchLanguage")}
+        >
+          <TbLanguage aria-hidden="true" />
+          <span>{isPortuguese ? "PT" : "EN"}</span>
+        </button>
+      </div>
+
+      {scrolled && <ScrollProgress />}
+    </nav>
   );
 };
